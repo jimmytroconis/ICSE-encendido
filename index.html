@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ICSE Prod">
+<meta name="theme-color" content="#0F1117">
 <title>ICSE — Producción</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
   --g:#1D9E75;--gl:#E1F5EE;--gd:#0F6E56;
@@ -18,239 +19,213 @@
   --border:#2A2F3E;--border2:#343A4E;
   --txt:#E8EAF0;--txt2:#8B90A4;--txt3:#555B6E;
   --blue:#3B82F6;--blue-l:#1E3A5F;
-  --radius:10px;
 }
-html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:14px;overscroll-behavior:none}
+html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:15px;overscroll-behavior:none}
+
+/* LOGIN */
+.login-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:32px;z-index:500;
+}
+.login-logo{
+  width:72px;height:72px;border-radius:20px;background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;
+  margin-bottom:20px;
+}
+.login-screen h2{font-size:20px;font-weight:600;margin-bottom:6px}
+.login-screen p{font-size:13px;color:var(--txt2);margin-bottom:32px;text-align:center}
+.login-screen input{
+  width:100%;max-width:320px;
+  background:var(--bg3);border:1px solid var(--border2);border-radius:12px;
+  padding:14px 16px;font-size:16px;color:var(--txt);
+  font-family:'DM Sans',sans-serif;margin-bottom:12px;outline:none;
+}
+.login-screen input:focus{border-color:var(--g)}
+.role-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  width:100%;max-width:320px;margin-bottom:20px;
+}
+.role-card{
+  background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;
+  padding:12px;cursor:pointer;transition:all .15s;text-align:center;
+}
+.role-card.selected{border-color:var(--g);background:#0D2B1F}
+.role-card .role-icon{font-size:22px;margin-bottom:4px}
+.role-card .role-name{font-size:12px;font-weight:500;color:var(--txt2)}
+.role-card.selected .role-name{color:var(--g)}
+.login-btn{
+  width:100%;max-width:320px;background:var(--g);border:none;border-radius:12px;
+  padding:14px;font-size:15px;font-weight:600;color:#fff;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  opacity:.4;transition:opacity .2s;
+}
+.login-btn.ready{opacity:1}
 
 /* HEADER */
-.app-header{
-  background:var(--bg2);
-  border-bottom:1px solid var(--border);
-  padding:0 16px;
-  position:sticky;top:0;z-index:100;
-}
-.header-top{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 0 8px;
-}
-.header-title{display:flex;align-items:center;gap:10px}
-.logo{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--g);display:flex;align-items:center;justify-content:center;
-  font-size:16px;font-weight:600;color:#fff;font-family:'DM Mono',monospace;
-  flex-shrink:0;
-}
-.header-title h1{font-size:15px;font-weight:600;color:var(--txt)}
+.app-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;position:sticky;top:0;z-index:100}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;gap:10px}
+.header-left{display:flex;align-items:center;gap:10px}
+.logo{width:36px;height:36px;border-radius:10px;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;flex-shrink:0}
+.header-title h1{font-size:14px;font-weight:600}
 .header-title p{font-size:11px;color:var(--txt2);margin-top:1px}
-.header-actions{display:flex;gap:8px;align-items:center}
+.header-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
 .svc-toggle{display:flex;background:var(--bg3);border-radius:20px;padding:3px;gap:2px}
-.svc-btn{
-  background:none;border:none;border-radius:16px;
-  padding:4px 12px;font-size:12px;color:var(--txt2);
-  cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;
-  transition:all .2s;
-}
+.svc-btn{background:none;border:none;border-radius:16px;padding:4px 10px;font-size:11px;color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
 .svc-btn.on{background:var(--g);color:#fff}
-.rst-btn{
-  background:none;border:1px solid var(--border2);border-radius:8px;
-  padding:6px 10px;font-size:12px;color:var(--txt2);cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-}
+.user-badge{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--txt2);cursor:pointer}
 
 /* STATS */
-.stats-row{
-  display:flex;gap:8px;padding:8px 0 12px;overflow-x:auto;
-  scrollbar-width:none;
-}
+.stats-row{display:flex;gap:6px;padding:8px 0 10px;overflow-x:auto;scrollbar-width:none}
 .stats-row::-webkit-scrollbar{display:none}
-.stat{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:8px;padding:6px 12px;white-space:nowrap;
-  font-size:11px;color:var(--txt2);flex-shrink:0;
-}
+.stat{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 10px;white-space:nowrap;font-size:11px;color:var(--txt2);flex-shrink:0}
 .stat b{font-weight:600;color:var(--txt)}
 .stat.gs b{color:var(--g)}
-
-/* PROGRESS BAR */
-.progress-wrap{padding-bottom:12px}
-.progress-track{
-  height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;
-}
-.progress-fill{
-  height:100%;background:var(--g);border-radius:2px;
-  transition:width .4s ease;width:0%;
-}
+.progress-track{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;margin-bottom:10px}
+.progress-fill{height:100%;background:var(--g);border-radius:2px;transition:width .4s ease;width:0%}
 
 /* TABS */
-.tabs{
-  display:flex;border-bottom:1px solid var(--border);
-  overflow-x:auto;scrollbar-width:none;
-  background:var(--bg2);
-  position:sticky;top:73px;z-index:99;
-}
+.tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;background:var(--bg2);position:sticky;top:115px;z-index:99}
 .tabs::-webkit-scrollbar{display:none}
-.tab{
-  background:none;border:none;border-bottom:2px solid transparent;
-  padding:10px 16px;font-size:12px;font-weight:500;
-  color:var(--txt2);cursor:pointer;white-space:nowrap;
-  font-family:'DM Sans',sans-serif;
-  transition:color .2s;
-}
+.tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:12px;font-weight:500;color:var(--txt2);cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:color .2s}
 .tab.on{color:var(--g);border-bottom-color:var(--g)}
 
 /* PANES */
 .pane{display:none;padding:12px 16px 80px}
 .pane.on{display:block}
 
-/* BANNER */
-.bn{
-  border-radius:var(--radius);padding:10px 12px;
-  font-size:11px;line-height:1.6;margin-bottom:12px;
-}
+/* BANNERS */
+.bn{border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.6;margin-bottom:12px}
 .bn.info{background:#0D2B1F;border:1px solid #1A4D35;color:#5DCAA5}
 .bn.warn{background:#2B1E0A;border:1px solid #4D3510;color:#EF9F27}
 .bn.danger{background:#2B0F0F;border:1px solid #4D1A1A;color:#F09595}
 .bn b{font-weight:600}
-.bn.miercoles{display:none}
 
 /* PHASE */
-.phase{
-  border:1px solid var(--border);border-radius:var(--radius);
-  margin-bottom:10px;overflow:hidden;
-}
-.ph-head{
-  padding:11px 14px;background:var(--bg3);
-  display:flex;align-items:center;gap:8px;
-  cursor:pointer;user-select:none;
-}
-.ph-step{
-  font-size:10px;font-weight:600;
-  background:var(--blue-l);color:var(--blue);
-  border-radius:12px;padding:2px 8px;
-  font-family:'DM Mono',monospace;white-space:nowrap;
-}
-.ph-title{font-size:14px;font-weight:600;flex:1;color:var(--txt)}
-.badge{
-  font-size:10px;padding:2px 8px;border-radius:10px;
-  font-weight:500;white-space:nowrap;
-}
+.phase{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.ph-head{padding:12px 14px;background:var(--bg3);display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none}
+.ph-step{font-size:10px;font-weight:600;background:var(--blue-l);color:var(--blue);border-radius:12px;padding:2px 8px;font-family:'DM Mono',monospace;white-space:nowrap}
+.ph-title{font-size:13px;font-weight:600;flex:1;color:var(--txt)}
+.badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;white-space:nowrap}
 .badge.green{background:#0D2B1F;color:#5DCAA5}
 .badge.warn{background:#2B1E0A;color:#EF9F27}
 .badge.danger{background:#2B0F0F;color:#F09595}
 .badge.blue{background:var(--blue-l);color:var(--blue)}
-.ph-prog{
-  font-size:10px;color:var(--txt3);
-  font-family:'DM Mono',monospace;min-width:30px;text-align:right;
-}
-.ph-arrow{font-size:10px;color:var(--txt3);transition:transform .2s}
+.ph-prog{font-size:10px;color:var(--txt3);font-family:'DM Mono',monospace;min-width:28px;text-align:right}
+.ph-arrow{font-size:10px;color:var(--txt3);transition:transform .2s;margin-left:2px}
 .phase.open .ph-arrow{transform:rotate(180deg)}
-
 .ph-body{display:none;border-top:1px solid var(--border)}
 .phase.open .ph-body{display:block}
 
 /* ITEMS */
-.item{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:10px 14px;border-bottom:1px solid var(--border);
-  cursor:pointer;transition:background .1s;
-  -webkit-user-select:none;user-select:none;
-}
+.item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s;-webkit-user-select:none;user-select:none;position:relative}
 .item:last-child{border-bottom:none}
 .item:active{background:var(--bg3)}
 .item.ck .ilabel{text-decoration:line-through;color:var(--txt3)}
 .item.ck .isub{color:var(--txt3)}
-
-.checkbox{
-  width:18px;height:18px;min-width:18px;
-  border:1.5px solid var(--border2);border-radius:5px;
-  margin-top:1px;display:flex;align-items:center;justify-content:center;
-  transition:all .15s;flex-shrink:0;
-}
-.item.ck .checkbox{
-  background:var(--g);border-color:var(--g);
-}
-.checkmark{
-  width:10px;height:10px;opacity:0;
-  transition:opacity .15s;
-}
-.item.ck .checkmark{opacity:1}
-.checkmark::before{
-  content:'';display:block;
-  width:10px;height:10px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 5L4 7.5L8.5 2.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  background-size:contain;background-repeat:no-repeat;
-}
-
+.checkbox{width:22px;height:22px;min-width:22px;border:1.5px solid var(--border2);border-radius:6px;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.item.ck .checkbox{background:var(--g);border-color:var(--g)}
+.checkmark{font-size:13px;color:#fff;display:none}
+.item.ck .checkmark{display:block}
 .itext{flex:1;min-width:0}
-.ilabel{font-size:13px;line-height:1.4;color:var(--txt);transition:color .15s}
+.ilabel{font-size:18px;line-height:1.5;color:var(--txt);transition:color .15s}
 .isub{font-size:14px;color:var(--txt2);margin-top:4px;line-height:1.5;transition:color .15s}
-.itags{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
-.rtag{
-  font-size:10px;padding:2px 7px;border-radius:5px;font-weight:500;
-}
+.itags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.rtag{font-size:11px;padding:3px 8px;border-radius:5px;font-weight:500}
 .rs{background:#1E3A5F;color:#93C5FD}
 .rv{background:#2D1B69;color:#C4B5FD}
 .rl{background:#2B1E0A;color:#FCD34D}
 .rp{background:#0D2B1F;color:#6EE7B7}
 .rd{background:#2B0F0F;color:#FCA5A5}
 .ra{background:var(--bg3);color:var(--txt2)}
-.etag{
-  font-size:10px;padding:2px 7px;border-radius:5px;
-  background:var(--bg3);color:var(--txt3);
-  border:1px solid var(--border);
-}
+.etag{font-size:11px;padding:3px 8px;border-radius:5px;background:var(--bg3);color:var(--txt3);border:1px solid var(--border)}
 
-/* FLOATING RESET */
-.fab{
-  position:fixed;bottom:24px;right:20px;
-  width:48px;height:48px;border-radius:50%;
-  background:var(--bg2);border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);
-  font-size:18px;z-index:200;
-  transition:transform .15s;
-}
+/* WHO CHECKED */
+.who-checked{font-size:10px;color:var(--txt3);margin-top:4px;font-style:italic}
+
+/* ONLINE INDICATOR */
+.online-dot{width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block;margin-right:4px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* USERS ONLINE */
+.online-bar{display:flex;gap:6px;padding:6px 0 10px;flex-wrap:wrap}
+.online-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:5px}
+
+/* FAB */
+.fab{position:fixed;bottom:24px;right:20px;width:50px;height:50px;border-radius:50%;background:var(--bg2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.5);font-size:20px;z-index:200;transition:transform .15s}
 .fab:active{transform:scale(.92)}
 
-/* COMPLETION TOAST */
-.toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--g);color:#fff;
-  padding:10px 20px;border-radius:20px;
-  font-size:13px;font-weight:500;
-  opacity:0;transition:all .3s;pointer-events:none;
-  white-space:nowrap;z-index:300;
-}
+/* TOAST */
+.toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--bg2);border:1px solid var(--border2);color:var(--txt);padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;z-index:300;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{background:#0D2B1F;border-color:#1A4D35;color:#5DCAA5}
 </style>
 </head>
 <body>
 
-<div class="app-header">
-  <div class="header-top">
-    <div class="header-title">
-      <div class="logo">IC</div>
-      <div>
-        <h1>Producción — ICSE</h1>
-        <p>Sonido · Video · Luces · ProPresenter</p>
-      </div>
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-logo">IC</div>
+  <h2>ICSE Producción</h2>
+  <p>Ingresa tu nombre y selecciona tu rol para continuar</p>
+  <input type="text" id="nameInput" placeholder="Tu nombre" maxlength="20" oninput="checkLogin()">
+  <div class="role-grid">
+    <div class="role-card" onclick="selectRole('Sonido','🎛')">
+      <div class="role-icon">🎛</div>
+      <div class="role-name">Sonido</div>
     </div>
-    <div class="header-actions">
-      <div class="svc-toggle">
-        <button class="svc-btn on" onclick="setSvc('d',this)">Domingo</button>
-        <button class="svc-btn" onclick="setSvc('m',this)">Miércoles</button>
-      </div>
+    <div class="role-card" onclick="selectRole('Video','📹')">
+      <div class="role-icon">📹</div>
+      <div class="role-name">Video / ATEM</div>
+    </div>
+    <div class="role-card" onclick="selectRole('ProPresenter','🖥')">
+      <div class="role-icon">🖥</div>
+      <div class="role-name">ProPresenter</div>
+    </div>
+    <div class="role-card" onclick="selectRole('Luces','💡')">
+      <div class="role-icon">💡</div>
+      <div class="role-name">Luces</div>
+    </div>
+    <div class="role-card" onclick="selectRole('Líder','📋')">
+      <div class="role-icon">📋</div>
+      <div class="role-name">Líder</div>
+    </div>
+    <div class="role-card" onclick="selectRole('General','👤')">
+      <div class="role-icon">👤</div>
+      <div class="role-name">General</div>
     </div>
   </div>
+  <button class="login-btn" id="loginBtn" onclick="doLogin()">Entrar al checklist</button>
+</div>
+
+<!-- MAIN APP -->
+<div id="mainApp" style="display:none">
+<div class="app-header">
+  <div class="header-top">
+    <div class="header-left">
+      <div class="logo">IC</div>
+      <div class="header-title">
+        <h1>Producción — ICSE</h1>
+        <p id="userLabel">Cargando...</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="svc-toggle">
+        <button class="svc-btn on" onclick="setSvc('d',this)">Dom</button>
+        <button class="svc-btn" onclick="setSvc('m',this)">Mié</button>
+      </div>
+      <div class="user-badge" onclick="logout()">Salir</div>
+    </div>
+  </div>
+  <div class="online-bar" id="onlineBar"></div>
   <div class="stats-row">
     <div class="stat">Total: <b id="st">0</b></div>
     <div class="stat gs">Listos: <b id="sd">0</b></div>
     <div class="stat">Restantes: <b id="sr">0</b></div>
     <div class="stat">Progreso: <b id="sp">0%</b></div>
   </div>
-  <div class="progress-wrap">
-    <div class="progress-track"><div class="progress-fill" id="pbar"></div></div>
-  </div>
+  <div class="progress-track"><div class="progress-fill" id="pbar"></div></div>
 </div>
 
 <div class="tabs">
@@ -264,11 +239,29 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans
 <div id="t2" class="pane"></div>
 <div id="t3" class="pane"></div>
 <div id="t4" class="pane"></div>
+</div>
 
-<div class="fab" onclick="confirmReset()" title="Reiniciar">↺</div>
+<div class="fab" onclick="confirmReset()">↺</div>
 <div class="toast" id="toast"></div>
 
-<script>
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB21H37tQoNWpF2nOx3FRu1aAFLD88iH8Q",
+  authDomain: "icse-produccion.firebaseapp.com",
+  databaseURL: "https://icse-produccion-default-rtdb.firebaseio.com",
+  projectId: "icse-produccion",
+  storageBucket: "icse-produccion.firebasestorage.app",
+  messagingSenderId: "480914058037",
+  appId: "1:480914058037:web:93283610f2e89956957a7c"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 const RT={s:'rs',v:'rv',l:'rl',p:'rp',d:'rd',a:'ra'};
 const RL={s:'Sonido',v:'Video',l:'Luces',p:'ProPresenter',d:'Líder',a:'Todos'};
 
@@ -288,7 +281,7 @@ t1:[
     {id:'b2',l:'Esperar boot completo del ATEM y Novastar VX6s',s:'ATEM: LEDs estables · Novastar: pantalla activa sin errores',r:'v',eq:'ATEM / Novastar'},
   ]},
   {id:'e8',step:'5',title:'Mac de Lightkey — luces',badge:'Luces',bc:'green',items:[
-    {id:'h1',l:'Abrir Lightkey — cargar preset del servicio',s:'Las luces tienen corriente directa — no hay que encender nada · Preset: Domingo o Miércoles',r:'l',eq:'Lightkey'},
+    {id:'h1',l:'Abrir Lightkey — cargar preset del servicio',s:'Las luces tienen corriente directa · Preset: Domingo o Miércoles',r:'l',eq:'Lightkey'},
     {id:'h2',l:'Bajar brillo general al 70% en Lightkey',s:'Antes de activar cualquier escena — protege los fixtures',r:'l',eq:'Lightkey'},
     {id:'h3',l:'Verificar que todos los fixtures responden',s:'Revisar grupo por grupo desde Lightkey',r:'l',eq:'Lightkey'},
     {id:'h4',l:'Encender máquina de humo — verificar nivel de fluido',s:'Confirmar que produce humo correctamente antes del servicio',r:'l',eq:'Máquina de humo'},
@@ -299,16 +292,16 @@ t1:[
   ]},
   {id:'e5',step:'7',title:'Abrir ProPresenter 7',badge:'ProPresenter',bc:'green',items:[
     {id:'e1',l:'Abrir ProPresenter 7 en la Mac',s:'Con LED y confidence monitor encendidos — los detecta correctamente',r:'p',eq:'ProPresenter 7'},
-    {id:'e2',l:'Verificar que ProPresenter detecta los outputs',s:'LED principal (via Novastar VX6s) · Confidence monitor',r:'p',eq:'ProPresenter 7'},
+    {id:'e2x',l:'Verificar que ProPresenter detecta los outputs',s:'LED principal (via Novastar VX6s) · Confidence monitor',r:'p',eq:'ProPresenter 7'},
   ]},
   {id:'e9',step:'8',title:'TVs de respaldo — encender y verificar señal',badge:'Video',bc:'blue',items:[
-    {id:'i1',l:'Encender TV — overflow',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Overflow'},
-    {id:'i2',l:'Encender TV — cuarto de infantes',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Infantes'},
-    {id:'i3',l:'Encender TV — área lateral del santuario',s:'Ir físicamente · Verificar señal · Dejar en MUTE — el audio viene del sistema principal',r:'v',eq:'TV Lateral'},
-    {id:'i4',l:'Encender TV — cuarto de bienvenida / producción',s:'Ir físicamente · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Bienvenida'},
+    {id:'i1',l:'Encender TV — overflow',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen',r:'v',eq:'TV Overflow'},
+    {id:'i2',l:'Encender TV — cuarto de infantes',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen',r:'v',eq:'TV Infantes'},
+    {id:'i3',l:'Encender TV — área lateral del santuario',s:'Ir físicamente · Verificar señal · Dejar en MUTE',r:'v',eq:'TV Lateral'},
+    {id:'i4',l:'Encender TV — cuarto de bienvenida / producción',s:'Ir físicamente · Verificar señal · Revisar volumen',r:'v',eq:'TV Bienvenida'},
   ]},
-  {id:'e6',step:'9',title:'Rack de sonido — power + amp + X32',badge:'Sonido',bc:'green',items:[
-    {id:'f1',l:'Encender consola Behringer X32',s:'Primero siempre — esperar boot completo aprox. 30 seg hasta display estable',r:'s',eq:'X32'},
+  {id:'e6',step:'9',title:'Rack de sonido',badge:'Sonido',bc:'green',items:[
+    {id:'f1',l:'Encender consola Behringer X32',s:'Primero siempre — esperar boot completo aprox. 30 seg',r:'s',eq:'X32'},
     {id:'f2',l:'Verificar escena correcta cargada en X32',s:'Escena: Domingo o Miércoles — revisar nombre en pantalla',r:'s',eq:'X32'},
     {id:'f3',l:'Verificar que todos los faders del X32 están en cero',s:'Antes de subir cualquier nivel',r:'s',eq:'X32'},
     {id:'f4',l:'Encender el switch del rack de power',s:'Enciende: Shure PSM in-ears · 4 receptores inalámbricos Shure',r:'s',eq:'Rack de power'},
@@ -322,13 +315,12 @@ t1:[
     {id:'g4',l:'Encender cam 5 — GoPro 2 (sobre la batería)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 2 · Cam 5'},
     {id:'g5',l:'Confirmar 4 señales en ATEM Multiview',s:'Cam 1 · Cam 2 · Cam 4 (frontal) · Cam 5 (batería)',r:'v',eq:'ATEM'},
   ]},
-  {id:'e10',step:'11',title:'Streaming',badge:'Video',bc:'blue',items:[
+  {id:'e10',step:'11',title:'Streaming — Restream',badge:'Video',bc:'blue',items:[
     {id:'j1',l:'Verificar internet — mínimo 10 Mbps upload',s:'Usar speedtest.net antes de configurar',r:'v',eq:'Red'},
-    {id:'j2',l:'Verificar que Restream está configurado y en línea',s:'Confirmar títulos del stream en Restream · YouTube y Facebook activos',r:'v',eq:'Restream'},
-    {id:'j3',l:'Confirmar que el timer de ProPresenter arrancará el stream automáticamente',s:'Domingo: 11:00 AM · Miércoles: 7:10 PM · No iniciar manualmente',r:'v',eq:'Restream'},
+    {id:'j2',l:'Verificar que Restream está configurado y en línea',s:'Confirmar títulos del stream · YouTube y Facebook activos',r:'v',eq:'Restream'},
+    {id:'j3',l:'Confirmar que el timer de ProPresenter arrancará el stream',s:'Domingo: 11:00 AM · Miércoles: 7:10 PM · No iniciar manualmente',r:'v',eq:'Restream'},
   ]},
 ],
-
 t2:[
   {id:'p1',title:'Prueba de sonido — instrumentos',badge:'Sonido',bc:'green',items:[
     {id:'k1',l:'Canal de batería — bombo, caja, hi-hat, overheads',s:'Sin clipping en cada subchannel',r:'s',eq:'X32'},
@@ -358,12 +350,12 @@ t2:[
     {id:'n2',l:'Confirmar resolución de salida coincide con ProPresenter',s:'Sin corte de bordes ni overscan',r:'v',eq:'Novastar VX6s'},
     {id:'n3',l:'Verificar imagen en LED wall — color, nitidez y alineación',s:'Sin franjas · sin píxeles muertos · sin distorsión',r:'v',eq:'Novastar VX6s'},
   ]},
-  {id:'p5',title:'ProPresenter 7 — contenido del servicio',badge:'ProPresenter',bc:'green',items:[
+  {id:'p5',title:'ProPresenter 7 — contenido',badge:'ProPresenter',bc:'green',items:[
     {id:'o1',l:'Abrir playlist del servicio',s:'Orden: alabanza → anuncios → sermón → altar → cierre',r:'p',eq:'ProPresenter 7'},
     {id:'o2',l:'Verificar letras de canciones completas y correctas',s:'Revisar con el setlist del líder de alabanza',r:'p',eq:'ProPresenter 7'},
     {id:'o3',l:'Verificar versículos y textos del sermón',s:'Confirmar con el pastor',r:'p',eq:'ProPresenter 7'},
     {id:'o4',l:'Verificar Stage Display en confidence monitor',s:'Letra siguiente y reloj visibles',r:'p',eq:'Confidence Monitor'},
-    {id:'o5',l:'Verificar señal en las 4 TVs de respaldo',s:'Overflow · Infantes · Lateral santuario · Bienvenida',r:'v',eq:'TVs respaldo'},
+    {id:'o5',l:'Verificar señal en las 4 TVs de respaldo',s:'Overflow · Infantes · Lateral · Bienvenida',r:'v',eq:'TVs respaldo'},
     {id:'o6',l:'Activar loop de slides de pre-servicio',s:'Corriendo al llegar la congregación',r:'p',eq:'ProPresenter 7'},
   ]},
   {id:'p6',title:'Iluminación — Lightkey',badge:'Luces',bc:'green',items:[
@@ -372,9 +364,9 @@ t2:[
     {id:'q3',l:'Confirmar escenas: alabanza, predicación, altar',s:'Repaso rápido de cada escena',r:'l',eq:'Lightkey'},
     {id:'q4',l:'Verificar máquina de humo lista para el servicio',s:'Precalentada y con fluido suficiente',r:'l',eq:'Máquina de humo'},
   ]},
-  {id:'p7',title:'Pre-streaming',badge:'Video',bc:'blue',items:[
-    {id:'r1',l:'Verificar que Restream está en línea y configurado',s:'Confirmar conexión a YouTube y Facebook desde el dashboard de Restream',r:'v',eq:'Restream'},
-    {id:'r2',l:'Configurar título del stream en Restream',s:'Nombre del sermón + fecha + pastor — se aplica a YouTube y Facebook simultáneamente',r:'v',eq:'Restream'},
+  {id:'p7',title:'Pre-streaming — Restream',badge:'Video',bc:'blue',items:[
+    {id:'r1',l:'Verificar que Restream está en línea y configurado',s:'Confirmar conexión a YouTube y Facebook desde el dashboard',r:'v',eq:'Restream'},
+    {id:'r2',l:'Configurar título del stream en Restream',s:'Nombre del sermón + fecha + pastor — se aplica a YouTube y Facebook',r:'v',eq:'Restream'},
     {id:'r3',l:'Confirmar que el stream arrancará con el timer de ProPresenter',s:'No iniciar manualmente — el timer lo activa automáticamente',r:'v',eq:'Restream'},
   ]},
   {id:'p8',title:'Coordinación final — líder',badge:'Líder',bc:'danger',items:[
@@ -385,9 +377,9 @@ t2:[
 ],
 t3:[
   {id:'sv1',title:'Inicio del servicio',badge:'Todos',bc:'green',items:[
-    {id:'t1',l:'Verificar timer de cuenta regresiva activo en ProPresenter',s:'Domingo: stream arranca automático a las 11:00 AM · Miércoles: 7:10 PM · NO iniciar stream manualmente',r:'p',eq:'ProPresenter 7'},
-    {id:'t2',l:'Confirmar que el stream arrancó en YouTube y Facebook al llegar el timer a cero',s:'Verificar en Restream dashboard que ambas plataformas están recibiendo señal',r:'v',eq:'Restream'},
-    {id:'t3',l:'Activar escena de alabanza en Lightkey',s:'Domingo: luces de casa se apagan automáticamente a las 11:04 AM · Miércoles: apagar manual',r:'l',eq:'Lightkey'},
+    {id:'t1',l:'Verificar timer de cuenta regresiva activo en ProPresenter',s:'Domingo: stream arranca automático a las 11:00 AM · Miércoles: 7:10 PM',r:'p',eq:'ProPresenter 7'},
+    {id:'t2',l:'Confirmar que el stream arrancó en YouTube y Facebook',s:'Verificar en Restream dashboard que ambas plataformas están activas',r:'v',eq:'Restream'},
+    {id:'t3',l:'Activar escena de alabanza en Lightkey',s:'Domingo: luces de casa se apagan automáticamente a las 11:04 AM · Miércoles: manual',r:'l',eq:'Lightkey'},
     {id:'t4',l:'ProPresenter: diapositiva de bienvenida',s:'Luego letras en cue del líder de alabanza',r:'p',eq:'ProPresenter 7'},
     {id:'t5',l:'ATEM: plano general — cam 1 (URSA)',s:'Cortar a cam 2, cam 4 o cam 5 según el movimiento',r:'v',eq:'ATEM'},
     {id:'t6',l:'Sonido: confirmar niveles de apertura estables',s:'Vocalistas, instrumentos e in-ears balanceados',r:'s',eq:'X32'},
@@ -404,7 +396,7 @@ t3:[
     {id:'v2',l:'Luces: escena neutra para anuncios',s:'Iluminación pareja, no dramática',r:'l',eq:'Lightkey'},
     {id:'v3',l:'Video: plano más abierto — presentador bien encuadrado',s:'',r:'v',eq:'ATEM'},
     {id:'v4',l:'Sonido: subir mic presentador — bajar música de fondo',s:'Sin feedback con el cambio',r:'s',eq:'X32'},
-    {id:'v5',l:'Cuando entra el pastor — verificar que su mic está activo y con volumen',s:'Confirmar nivel en X32 antes de que hable — no esperar a que ya esté hablando',r:'s',eq:'Shure mic 4'},
+    {id:'v5',l:'Cuando entra el pastor — verificar que su mic está activo y con volumen',s:'Confirmar nivel en X32 antes de que hable',r:'s',eq:'Shure mic 4'},
   ]},
   {id:'sv4',title:'Predicación / sermón',badge:'Todos',bc:'green',items:[
     {id:'w1',l:'ProPresenter: versículos en cue del pastor',s:'Atento — no adelantarse ni rezagarse',r:'p',eq:'ProPresenter 7'},
@@ -424,19 +416,19 @@ t4:[
   {id:'cl1',title:'Cierre del stream',badge:'Video',bc:'blue',items:[
     {id:'y1',l:'ProPresenter: slide de cierre con info de la iglesia',s:'Redes sociales, horarios, dirección',r:'p',eq:'ProPresenter 7'},
     {id:'y2',l:'1–2 min de cierre antes de detener stream',s:'No cortar abruptamente',r:'v',eq:'Restream'},
-    {id:'y3',l:'Detener stream desde Restream',s:'Confirmar "finalizado" en YouTube y Facebook desde el dashboard',r:'v',eq:'Restream'},
-    {id:'y4',l:'Descargar archivos de cam 4 y cam 5 (GoPros) si se necesitan',s:'Para Reels, Shorts o contenido de redes',r:'v',eq:'GoPros'},
+    {id:'y3',l:'Detener stream desde Restream',s:'Confirmar "finalizado" en YouTube y Facebook',r:'v',eq:'Restream'},
+    {id:'y4',l:'Descargar archivos de cam 4 y cam 5 si se necesitan',s:'Para Reels, Shorts o contenido de redes',r:'v',eq:'GoPros'},
   ]},
   {id:'cl2',title:'Apagado — orden inverso estricto',badge:'Orden estricto',bc:'warn',items:[
     {id:'z1',l:'Bajar todos los faders del X32 a cero',s:'Antes de tocar cualquier equipo',r:'s',eq:'X32'},
-    {id:'z2',l:'Apagar amp / PA — switch separado en el rack — PRIMERO',s:'Siempre el primero al apagar — protege las bocinas',r:'s',eq:'Amp / PA'},
+    {id:'z2',l:'Apagar amp / PA — switch separado — PRIMERO',s:'Siempre el primero al apagar — protege las bocinas',r:'s',eq:'Amp / PA'},
     {id:'z3',l:'Apagar rack de power del rack de sonido',s:'Un solo switch apaga Shure PSM y los 4 receptores',r:'s',eq:'Rack de power'},
-    {id:'z4',l:'Apagar consola X32 — ÚLTIMA',s:'La mixer siempre va de última al apagar · Guardar escena si se hicieron ajustes',r:'s',eq:'X32'},
+    {id:'z4',l:'Apagar consola X32 — ÚLTIMA',s:'La mixer siempre va de última al apagar · Guardar escena si hay ajustes',r:'s',eq:'X32'},
     {id:'z5',l:'Apagar cam 4 (GoPro 1) y cam 5 (GoPro 2)',s:'Conectar a carga si batería quedó baja',r:'v',eq:'GoPros'},
     {id:'z6',l:'Apagar cam 1 y cam 2 (URSA Broadcast G2)',s:'Poner tapas de lente',r:'v',eq:'URSA G2'},
     {id:'z7',l:'Cerrar ProPresenter 7',s:'Guardar proyecto si hay cambios pendientes',r:'p',eq:'ProPresenter 7'},
     {id:'z8',l:'Apagar confidence monitor',s:'',r:'p',eq:'Confidence Monitor'},
-    {id:'z9',l:'Apagar TVs de respaldo (ir físicamente a cada una)',s:'Bienvenida · Lateral santuario · Infantes · Overflow',r:'v',eq:'TVs respaldo'},
+    {id:'z9',l:'Apagar TVs de respaldo (ir físicamente)',s:'Bienvenida · Lateral · Infantes · Overflow',r:'v',eq:'TVs respaldo'},
     {id:'z10',l:'Apagar switches L.D. Screen en la pared',s:'',r:'v',eq:'LED principal'},
     {id:'z11',l:'Apagar Mac de ProPresenter',s:'',r:'p',eq:'Mac ProPresenter'},
     {id:'z12',l:'Apagar PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
@@ -447,142 +439,208 @@ t4:[
   {id:'cl3',title:'Post-producción y seguimiento',badge:'Líder',bc:'danger',items:[
     {id:'aa1',l:'Registrar incidencias técnicas del servicio',s:'Fallas, ajustes, cambios de último minuto',r:'d',eq:''},
     {id:'aa2',l:'Comunicar ajustes al equipo para el próximo servicio',s:'WhatsApp o reunión breve post-servicio',r:'d',eq:''},
-    {id:'aa3',l:'Subir video del sermón a YouTube (versión completa)',s:'SEO: título, descripción NTV, hashtags ICSE · Descargar desde Restream si no se grabó localmente',r:'d',eq:'YouTube'},
+    {id:'aa3',l:'Subir video del sermón a YouTube (versión completa)',s:'SEO: título, descripción NTV, hashtags ICSE · Descargar desde Restream si aplica',r:'d',eq:'YouTube'},
     {id:'aa4',l:'Extraer clip para Shorts / Reels si hay frase destacada',s:'DaVinci Resolve o CapCut — TikTok, IG, FB',r:'d',eq:''},
   ]},
 ],
 };
 
-const KEY='icse_prod_v1';
-let ck={};
-try{const r=localStorage.getItem(KEY);if(r)ck=JSON.parse(r)}catch(e){}
+// State
+let userName = '', userRole = '', userIcon = '';
+let checkedData = {};
+let selectedRole = null;
 
-function save(){try{localStorage.setItem(KEY,JSON.stringify(ck))}catch(e){}}
+// Firebase refs
+const checklistRef = ref(db, 'checklist');
+const usersRef = ref(db, 'users');
 
-function allItems(){
-  let a=[];
-  Object.values(PHASES).forEach(ps=>ps.forEach(ph=>ph.items.forEach(it=>a.push(it))));
-  return a;
-}
+// LOGIN
+window.selectRole = function(role, icon) {
+  selectedRole = {role, icon};
+  document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  checkLogin();
+};
 
-function updateStats(){
-  const all=allItems(),done=all.filter(i=>ck[i.id]).length,pct=all.length?Math.round(done/all.length*100):0;
-  document.getElementById('st').textContent=all.length;
-  document.getElementById('sd').textContent=done;
-  document.getElementById('sr').textContent=all.length-done;
-  document.getElementById('sp').textContent=pct+'%';
-  document.getElementById('pbar').style.width=pct+'%';
-  if(pct===100)showToast('¡Checklist completo! Todo listo para el servicio');
-}
+window.checkLogin = function() {
+  const name = document.getElementById('nameInput').value.trim();
+  const btn = document.getElementById('loginBtn');
+  btn.classList.toggle('ready', name.length > 0 && selectedRole);
+};
 
-function getPhase(id){
-  for(const ps of Object.values(PHASES))
-    for(const ph of ps)
-      if(ph.items.find(i=>i.id===id))return ph;
-  return null;
-}
+window.doLogin = function() {
+  const name = document.getElementById('nameInput').value.trim();
+  if (!name || !selectedRole) return;
+  userName = name;
+  userRole = selectedRole.role;
+  userIcon = selectedRole.icon;
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'block';
+  document.getElementById('userLabel').textContent = `${userIcon} ${userName} — ${userRole}`;
 
-function toggle(id){
-  ck[id]=!ck[id];
-  save();
-  const el=document.getElementById('i-'+id);
-  if(el)el.classList.toggle('ck',ck[id]);
-  updateStats();
-  const ph=getPhase(id);
-  if(ph){
-    const d=ph.items.filter(i=>ck[i.id]).length;
-    const p=document.getElementById('pp-'+ph.id);
-    if(p)p.textContent=d+'/'+ph.items.length;
-    if(d===ph.items.length)showToast('Paso completado ✓');
-  }
-}
+  // Register user online
+  const userRef = ref(db, `users/${userName}`);
+  set(userRef, { name: userName, role: userRole, icon: userIcon, online: true, ts: Date.now() });
 
-function togglePhase(id){
-  const ph=document.getElementById('ph-'+id);
-  if(ph)ph.classList.toggle('open');
-}
+  // Remove on disconnect handled by listening
+  startApp();
+};
 
-function setTab(t,btn){
-  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
-  document.getElementById(t).classList.add('on');
-  if(btn)btn.classList.add('on');
-}
+window.logout = function() {
+  if (!confirm('¿Salir del checklist?')) return;
+  const userRef = ref(db, `users/${userName}`);
+  remove(userRef);
+  location.reload();
+};
 
-function setSvc(s,btn){
-  document.querySelectorAll('.svc-btn').forEach(b=>b.classList.remove('on'));
-  if(btn)btn.classList.add('on');
-  document.querySelectorAll('.bn.miercoles').forEach(el=>{
-    el.style.display=(s==='m')?'block':'none';
+function startApp() {
+  buildPanes();
+
+  // Listen to checklist changes in real time
+  onValue(checklistRef, (snapshot) => {
+    checkedData = snapshot.val() || {};
+    refreshUI();
+  });
+
+  // Listen to online users
+  onValue(usersRef, (snapshot) => {
+    const users = snapshot.val() || {};
+    renderOnlineUsers(users);
   });
 }
 
-function confirmReset(){
-  if(confirm('¿Reiniciar todos los ítems del checklist?')){
-    ck={};save();
-    document.querySelectorAll('.item').forEach(el=>el.classList.remove('ck'));
-    Object.values(PHASES).forEach(ps=>ps.forEach(ph=>{
-      const el=document.getElementById('pp-'+ph.id);
-      if(el)el.textContent='0/'+ph.items.length;
-    }));
-    updateStats();
-    showToast('Checklist reiniciado');
-  }
+function renderOnlineUsers(users) {
+  const bar = document.getElementById('onlineBar');
+  const list = Object.values(users);
+  if (list.length === 0) { bar.innerHTML = ''; return; }
+  bar.innerHTML = list.map(u =>
+    `<div class="online-pill"><span class="online-dot"></span>${u.icon} ${u.name}</div>`
+  ).join('');
 }
+
+// TOGGLE
+window.toggle = function(id) {
+  const itemRef = ref(db, `checklist/${id}`);
+  if (checkedData[id]) {
+    remove(itemRef);
+  } else {
+    set(itemRef, { by: userName, role: userRole, icon: userIcon, ts: Date.now() });
+  }
+};
+
+function refreshUI() {
+  const all = allItems();
+  const done = all.filter(i => checkedData[i.id]).length;
+  document.getElementById('st').textContent = all.length;
+  document.getElementById('sd').textContent = done;
+  document.getElementById('sr').textContent = all.length - done;
+  const pct = Math.round(done / all.length * 100);
+  document.getElementById('sp').textContent = pct + '%';
+  document.getElementById('pbar').style.width = pct + '%';
+
+  all.forEach(it => {
+    const el = document.getElementById('i-' + it.id);
+    if (!el) return;
+    const data = checkedData[it.id];
+    el.classList.toggle('ck', !!data);
+    const who = el.querySelector('.who-checked');
+    if (who) who.textContent = data ? `✓ ${data.icon} ${data.by}` : '';
+  });
+
+  // Update phase progress
+  Object.values(PHASES).forEach(phases => phases.forEach(ph => {
+    const done = ph.items.filter(i => checkedData[i.id]).length;
+    const el = document.getElementById('pp-' + ph.id);
+    if (el) el.textContent = done + '/' + ph.items.length;
+  }));
+}
+
+function allItems() {
+  let a = [];
+  Object.values(PHASES).forEach(ps => ps.forEach(ph => ph.items.forEach(it => a.push(it))));
+  return a;
+}
+
+window.togglePhase = function(id) {
+  const ph = document.getElementById('ph-' + id);
+  if (ph) ph.classList.toggle('open');
+};
+
+window.setTab = function(t, btn) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(t).classList.add('on');
+  if (btn) btn.classList.add('on');
+};
+
+window.setSvc = function(s, btn) {
+  document.querySelectorAll('.svc-btn').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  const n = document.getElementById('svc-note');
+  if (n) n.style.display = (s === 'm') ? 'block' : 'none';
+};
+
+window.confirmReset = function() {
+  if (!confirm('¿Reiniciar TODO el checklist para todos?\nEsto afecta a todo el equipo.')) return;
+  set(checklistRef, null);
+  showToast('Checklist reiniciado para todos');
+};
 
 let toastTimer;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
+window.showToast = function(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
-}
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+};
 
-function build(){
-  const banners={
-    t1:`<div class="bn info"><b>Orden de encendido:</b> 1. Mac ProPresenter → 2. Confidence monitor → 3. LED principal → 4. Rack de video → 5. Mac Lightkey + luces → 6. PC ATEM Software → 7. Abrir ProPresenter → 8. TVs de respaldo → 9. Rack de sonido + X32 → 10. Cámaras → 11. Streaming (Restream)</div>`,
-    t2:`<div class="bn miercoles" style="display:none"><b>Miércoles:</b> Formato más reducido. Ajusta según el programa del día.</div>`,
-    t4:`<div class="bn warn"><b>Orden de apagado:</b> Faders X32 → Amp/PA (PRIMERO) → X32 → Rack de power → GoPros → URSA → Cerrar ProPresenter → Confidence monitor → TVs respaldo → LED screens → Mac → PC ATEM → Rack de video → Humo → Lightkey</div>`,
+function buildPanes() {
+  const banners = {
+    t1: `<div class="bn info"><b>Orden de encendido:</b> 1. Mac ProPresenter → 2. Confidence monitor → 3. LED principal → 4. Rack de video → 5. Mac Lightkey + luces → 6. PC ATEM Software → 7. Abrir ProPresenter → 8. TVs de respaldo → 9. X32 + Rack de power + Amp/PA → 10. Cámaras → 11. Streaming (Restream)</div>`,
+    t2: `<div class="bn warn" id="svc-note" style="display:none"><b>Miércoles:</b> Formato más reducido. Ajusta según el programa del día.</div>`,
+    t4: `<div class="bn danger"><b>Orden de apagado:</b> Faders X32 → Amp/PA (PRIMERO) → Rack de power → X32 (ÚLTIMA) → GoPros → URSA → Cerrar ProPresenter → Confidence monitor → TVs → LED screens → Mac → PC ATEM → Rack de video → Humo → Lightkey</div>`,
   };
 
-  Object.entries(PHASES).forEach(([tid,phases])=>{
-    const pane=document.getElementById(tid);
-    let html=banners[tid]||'';
-    phases.forEach(ph=>{
-      const done=ph.items.filter(i=>ck[i.id]).length;
-      const st=ph.step?`<span class="ph-step">P${ph.step}</span>`:'';
-      html+=`<div class="phase" id="ph-${ph.id}">
+  Object.entries(PHASES).forEach(([tid, phases]) => {
+    const pane = document.getElementById(tid);
+    let html = banners[tid] || '';
+    phases.forEach(ph => {
+      const done = ph.items.filter(i => checkedData[i.id]).length;
+      const bc = ph.bc || 'green';
+      const st = ph.step ? `<span class="ph-step">P${ph.step}</span>` : '';
+      html += `<div class="phase" id="ph-${ph.id}">
         <div class="ph-head" onclick="togglePhase('${ph.id}')">
           ${st}
           <span class="ph-title">${ph.title}</span>
-          <span class="badge ${ph.bc}">${ph.badge}</span>
+          <span class="badge ${bc}">${ph.badge}</span>
           <span class="ph-prog" id="pp-${ph.id}">${done}/${ph.items.length}</span>
           <span class="ph-arrow">▾</span>
         </div>
         <div class="ph-body">`;
-      ph.items.forEach(it=>{
-        const c=ck[it.id]?'ck':'';
-        const eq=it.eq?`<span class="etag">${it.eq}</span>`:'';
-        html+=`<div class="item ${c}" id="i-${it.id}" onclick="toggle('${it.id}')">
-          <div class="checkbox"><div class="checkmark"></div></div>
+      ph.items.forEach(it => {
+        const data = checkedData[it.id];
+        const ck = data ? 'ck' : '';
+        const eq = it.eq ? `<span class="etag">${it.eq}</span>` : '';
+        const whoText = data ? `${data.icon} ${data.by}` : '';
+        html += `<div class="item ${ck}" id="i-${it.id}" onclick="toggle('${it.id}')">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
           <div class="itext">
             <div class="ilabel">${it.l}</div>
-            ${it.s?`<div class="isub">${it.s}</div>`:''}
+            ${it.s ? `<div class="isub">${it.s}</div>` : ''}
             <div class="itags">
               <span class="rtag ${RT[it.r]}">${RL[it.r]}</span>
               ${eq}
             </div>
+            <div class="who-checked">${whoText}</div>
           </div>
         </div>`;
       });
-      html+=`</div></div>`;
+      html += `</div></div>`;
     });
-    pane.innerHTML=html;
+    pane.innerHTML = html;
   });
-  updateStats();
 }
-
-build();
 </script>
 </body>
 </html>
