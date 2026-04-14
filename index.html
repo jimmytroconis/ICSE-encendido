@@ -129,7 +129,7 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans
   border-radius:12px;padding:2px 8px;
   font-family:'DM Mono',monospace;white-space:nowrap;
 }
-.ph-title{font-size:12px;font-weight:600;flex:1;color:var(--txt)}
+.ph-title{font-size:14px;font-weight:600;flex:1;color:var(--txt)}
 .badge{
   font-size:10px;padding:2px 8px;border-radius:10px;
   font-weight:500;white-space:nowrap;
@@ -183,7 +183,7 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans
 
 .itext{flex:1;min-width:0}
 .ilabel{font-size:13px;line-height:1.4;color:var(--txt);transition:color .15s}
-.isub{font-size:11px;color:var(--txt2);margin-top:3px;line-height:1.4;transition:color .15s}
+.isub{font-size:14px;color:var(--txt2);margin-top:4px;line-height:1.5;transition:color .15s}
 .itags{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
 .rtag{
   font-size:10px;padding:2px 7px;border-radius:5px;font-weight:500;
@@ -277,23 +277,37 @@ t1:[
   {id:'e1',step:'1',title:'Mac de ProPresenter — solo encender',badge:'ProPresenter',bc:'green',items:[
     {id:'a1',l:'Encender la Mac de ProPresenter 7',s:'Solo encender y esperar arranque — NO abrir ProPresenter todavía',r:'p',eq:'Mac ProPresenter'},
   ]},
-  {id:'e2',step:'2',title:'Rack de video',badge:'Video',bc:'blue',items:[
-    {id:'b1',l:'Encender el switch principal del rack de video',s:'Enciende todo: ATEM · Novastar VX6s · HyperDeck · D-Link · Monitor de preview',r:'v',eq:'Rack de video'},
+  {id:'e4a',step:'2',title:'Confidence monitor',badge:'ProPresenter',bc:'warn',items:[
+    {id:'d2',l:'Encender confidence monitor — área de producción',s:'Stage Display · Debe estar ON antes de abrir ProPresenter',r:'p',eq:'Confidence Monitor'},
+  ]},
+  {id:'e4b',step:'3',title:'Pantalla LED principal',badge:'Video',bc:'warn',items:[
+    {id:'d1',l:'Encender switches L.D. Screen en la pared',s:'Esperar que el LED caliente y estabilice la imagen',r:'v',eq:'LED principal'},
+  ]},
+  {id:'e2',step:'4',title:'Rack de video',badge:'Video',bc:'blue',items:[
+    {id:'b1',l:'Encender el switch principal del rack de video',s:'Enciende todo: ATEM · Novastar VX6s · D-Link · Monitor de preview',r:'v',eq:'Rack de video'},
     {id:'b2',l:'Esperar boot completo del ATEM y Novastar VX6s',s:'ATEM: LEDs estables · Novastar: pantalla activa sin errores',r:'v',eq:'ATEM / Novastar'},
   ]},
-  {id:'e3',step:'3',title:'PC del ATEM Software Control',badge:'Video',bc:'blue',items:[
+  {id:'e8',step:'5',title:'Mac de Lightkey — luces',badge:'Luces',bc:'green',items:[
+    {id:'h1',l:'Abrir Lightkey — cargar preset del servicio',s:'Las luces tienen corriente directa — no hay que encender nada · Preset: Domingo o Miércoles',r:'l',eq:'Lightkey'},
+    {id:'h2',l:'Bajar brillo general al 70% en Lightkey',s:'Antes de activar cualquier escena — protege los fixtures',r:'l',eq:'Lightkey'},
+    {id:'h3',l:'Verificar que todos los fixtures responden',s:'Revisar grupo por grupo desde Lightkey',r:'l',eq:'Lightkey'},
+    {id:'h4',l:'Encender máquina de humo — verificar nivel de fluido',s:'Confirmar que produce humo correctamente antes del servicio',r:'l',eq:'Máquina de humo'},
+  ]},
+  {id:'e3',step:'6',title:'PC del ATEM Software Control',badge:'Video',bc:'blue',items:[
     {id:'c1',l:'Encender la PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
     {id:'c2',l:'Abrir ATEM Software Control — verificar conexión',s:'Todas las entradas visibles en el Multiview',r:'v',eq:'ATEM Software'},
   ]},
-  {id:'e4',step:'4',title:'LED principal + confidence monitor',badge:'Antes de ProPresenter',bc:'warn',items:[
-    {id:'d1',l:'Encender switches L.D. Screen en la pared',s:'Esperar que el LED caliente y estabilice la imagen',r:'v',eq:'LED principal'},
-    {id:'d2',l:'Encender confidence monitor — área de producción',s:'Stage Display · Debe estar ON antes de abrir ProPresenter',r:'p',eq:'Confidence Monitor'},
-  ]},
-  {id:'e5',step:'5',title:'Abrir ProPresenter 7',badge:'ProPresenter',bc:'green',items:[
+  {id:'e5',step:'7',title:'Abrir ProPresenter 7',badge:'ProPresenter',bc:'green',items:[
     {id:'e1',l:'Abrir ProPresenter 7 en la Mac',s:'Con LED y confidence monitor encendidos — los detecta correctamente',r:'p',eq:'ProPresenter 7'},
     {id:'e2',l:'Verificar que ProPresenter detecta los outputs',s:'LED principal (via Novastar VX6s) · Confidence monitor',r:'p',eq:'ProPresenter 7'},
   ]},
-  {id:'e6',step:'6',title:'Rack de sonido — power + amp + X32',badge:'Sonido',bc:'green',items:[
+  {id:'e9',step:'8',title:'TVs de respaldo — encender y verificar señal',badge:'Video',bc:'blue',items:[
+    {id:'i1',l:'Encender TV — overflow',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Overflow'},
+    {id:'i2',l:'Encender TV — cuarto de infantes',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Infantes'},
+    {id:'i3',l:'Encender TV — área lateral del santuario',s:'Ir físicamente · Verificar señal · Dejar en MUTE — el audio viene del sistema principal',r:'v',eq:'TV Lateral'},
+    {id:'i4',l:'Encender TV — cuarto de bienvenida / producción',s:'Ir físicamente · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Bienvenida'},
+  ]},
+  {id:'e6',step:'9',title:'Rack de sonido — power + amp + X32',badge:'Sonido',bc:'green',items:[
     {id:'f1',l:'Encender el switch del rack de power',s:'Enciende: Shure PSM in-ears · 4 receptores inalámbricos Shure',r:'s',eq:'Rack de power'},
     {id:'f2',l:'Verificar Shure PSM y 4 receptores activos',s:'Pantallas amarillas ON · canal y frecuencia visible en cada receptor',r:'s',eq:'Shure PSM / mics'},
     {id:'f3',l:'Encender el switch del amp / PA',s:'Switch separado dentro del mismo rack',r:'s',eq:'Amp / PA'},
@@ -301,30 +315,20 @@ t1:[
     {id:'f5',l:'Verificar escena correcta cargada en X32',s:'Escena: Domingo o Miércoles — revisar nombre en pantalla',r:'s',eq:'X32'},
     {id:'f6',l:'Verificar que todos los faders del X32 están en cero',s:'Antes de subir cualquier nivel',r:'s',eq:'X32'},
   ]},
-  {id:'e7',step:'7',title:'Cámaras',badge:'Video',bc:'blue',items:[
+  {id:'e7',step:'10',title:'Cámaras',badge:'Video',bc:'blue',items:[
     {id:'g1',l:'Encender cam 1 — URSA Broadcast G2 (plano general)',s:'Verificar señal SDI en ATEM input 1',r:'v',eq:'URSA cam 1'},
     {id:'g2',l:'Encender cam 2 — URSA Broadcast G2 (plano medio / close-up)',s:'Verificar señal SDI en ATEM input 2',r:'v',eq:'URSA cam 2'},
     {id:'g3',l:'Encender cam 4 — GoPro 1 (toma frontal, rack de luces)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 1 · Cam 4'},
     {id:'g4',l:'Encender cam 5 — GoPro 2 (sobre la batería)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 2 · Cam 5'},
     {id:'g5',l:'Confirmar 4 señales en ATEM Multiview',s:'Cam 1 · Cam 2 · Cam 4 (frontal) · Cam 5 (batería)',r:'v',eq:'ATEM'},
   ]},
-  {id:'e8',step:'8',title:'Luces — Lightkey',badge:'Luces',bc:'green',items:[
-    {id:'h1',l:'Abrir Lightkey — cargar preset del servicio',s:'Las luces tienen corriente directa — no hay que encender nada · Preset: Domingo o Miércoles',r:'l',eq:'Lightkey'},
-    {id:'h2',l:'Bajar brillo general al 70% en Lightkey',s:'Antes de activar cualquier escena — protege los fixtures',r:'l',eq:'Lightkey'},
-    {id:'h3',l:'Verificar que todos los fixtures responden',s:'Revisar grupo por grupo desde Lightkey',r:'l',eq:'Lightkey'},
-    {id:'h4',l:'Encender máquina de humo — verificar nivel de fluido',s:'Confirmar que produce humo correctamente antes del servicio',r:'l',eq:'Máquina de humo'},
-  ]},
-  {id:'e9',step:'9',title:'TVs de respaldo — encender y verificar señal',badge:'Video',bc:'blue',items:[
-    {id:'i1',l:'Encender TV — overflow',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Overflow'},
-    {id:'i2',l:'Encender TV — cuarto de infantes',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Infantes'},
-    {id:'i3',l:'Encender TV — área lateral del santuario',s:'Ir físicamente · Verificar señal · Dejar en MUTE — el audio viene del sistema principal',r:'v',eq:'TV Lateral'},
-    {id:'i4',l:'Encender TV — cuarto de bienvenida / producción',s:'Ir físicamente · Verificar señal · Revisar volumen a nivel adecuado',r:'v',eq:'TV Bienvenida'},
-  ]},
-  {id:'e10',step:'10',title:'Streaming',badge:'Video',bc:'blue',items:[
+  {id:'e10',step:'11',title:'Streaming',badge:'Video',bc:'blue',items:[
     {id:'j1',l:'Verificar internet — mínimo 10 Mbps upload',s:'Usar speedtest.net antes de configurar',r:'v',eq:'Red'},
-    {id:'j2',l:'Configurar stream keys de YouTube y Facebook en HyperDeck',s:'Copiar desde YouTube Studio y Meta Live Producer',r:'v',eq:'HyperDeck'},
+    {id:'j2',l:'Verificar que Restream está configurado y en línea',s:'Confirmar títulos del stream en Restream · YouTube y Facebook activos',r:'v',eq:'Restream'},
+    {id:'j3',l:'Confirmar que el timer de ProPresenter arrancará el stream automáticamente',s:'Domingo: 11:00 AM · Miércoles: 7:10 PM · No iniciar manualmente',r:'v',eq:'Restream'},
   ]},
 ],
+
 t2:[
   {id:'p1',title:'Prueba de sonido — instrumentos',badge:'Sonido',bc:'green',items:[
     {id:'k1',l:'Canal de batería — bombo, caja, hi-hat, overheads',s:'Sin clipping en cada subchannel',r:'s',eq:'X32'},
@@ -339,7 +343,7 @@ t2:[
     {id:'l3',l:'Mic 3 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 3'},
     {id:'l4',l:'Mic 4 (pastor) — voz, ganancia y frecuencia',s:'Nivel consistente con los vocalistas',r:'s',eq:'Shure mic 4'},
     {id:'l5',l:'Prueba de in-ears Shure PSM con todo el equipo',s:'Cada músico confirma su mezcla personal',r:'s',eq:'Shure PSM'},
-    {id:'l6',l:'Verificar señal de audio hacia HyperDeck / stream',s:'Nivel nominal -12 dBFS',r:'s',eq:'UMC202HD'},
+    {id:'l6',l:'Verificar señal de audio hacia Restream',s:'Nivel nominal -12 dBFS — confirmar en Restream que llega audio',r:'s',eq:'UMC202HD'},
   ]},
   {id:'p3',title:'Prueba de video — cámaras',badge:'Video',bc:'blue',items:[
     {id:'m1',l:'Balance de blancos cam 1 y cam 2 (URSA G2)',s:'WB manual — mismo valor en ambas',r:'v',eq:'URSA G2'},
@@ -369,9 +373,9 @@ t2:[
     {id:'q4',l:'Verificar máquina de humo lista para el servicio',s:'Precalentada y con fluido suficiente',r:'l',eq:'Máquina de humo'},
   ]},
   {id:'p7',title:'Pre-streaming',badge:'Video',bc:'blue',items:[
-    {id:'r1',l:'Stream de prueba en YouTube (sin listar) + Facebook',s:'Verificar video + audio correctos en ambas plataformas',r:'v',eq:'HyperDeck'},
-    {id:'r2',l:'Configurar título del stream — YouTube y Facebook',s:'Nombre del sermón + fecha + pastor',r:'v',eq:'YouTube / FB'},
-    {id:'r3',l:'Detener stream de prueba',s:'No iniciar el oficial hasta que comience el servicio',r:'v',eq:'HyperDeck'},
+    {id:'r1',l:'Verificar que Restream está en línea y configurado',s:'Confirmar conexión a YouTube y Facebook desde el dashboard de Restream',r:'v',eq:'Restream'},
+    {id:'r2',l:'Configurar título del stream en Restream',s:'Nombre del sermón + fecha + pastor — se aplica a YouTube y Facebook simultáneamente',r:'v',eq:'Restream'},
+    {id:'r3',l:'Confirmar que el stream arrancará con el timer de ProPresenter',s:'No iniciar manualmente — el timer lo activa automáticamente',r:'v',eq:'Restream'},
   ]},
   {id:'p8',title:'Coordinación final — líder',badge:'Líder',bc:'danger',items:[
     {id:'s1',l:'Reunión de 5 min con todo el equipo técnico',s:'Confirmar orden del servicio y señales de comunicación',r:'d',eq:''},
@@ -382,7 +386,7 @@ t2:[
 t3:[
   {id:'sv1',title:'Inicio del servicio',badge:'Todos',bc:'green',items:[
     {id:'t1',l:'Verificar timer de cuenta regresiva activo en ProPresenter',s:'Domingo: stream arranca automático a las 11:00 AM · Miércoles: 7:10 PM · NO iniciar stream manualmente',r:'p',eq:'ProPresenter 7'},
-    {id:'t2',l:'Confirmar que el stream arrancó en YouTube y Facebook al llegar el timer a cero',s:'Verificar en HyperDeck y en ambas plataformas que la señal está activa',r:'v',eq:'HyperDeck'},
+    {id:'t2',l:'Confirmar que el stream arrancó en YouTube y Facebook al llegar el timer a cero',s:'Verificar en Restream dashboard que ambas plataformas están recibiendo señal',r:'v',eq:'Restream'},
     {id:'t3',l:'Activar escena de alabanza en Lightkey',s:'Domingo: luces de casa se apagan automáticamente a las 11:04 AM · Miércoles: apagar manual',r:'l',eq:'Lightkey'},
     {id:'t4',l:'ProPresenter: diapositiva de bienvenida',s:'Luego letras en cue del líder de alabanza',r:'p',eq:'ProPresenter 7'},
     {id:'t5',l:'ATEM: plano general — cam 1 (URSA)',s:'Cortar a cam 2, cam 4 o cam 5 según el movimiento',r:'v',eq:'ATEM'},
@@ -393,7 +397,7 @@ t3:[
     {id:'u2',l:'Sonido: ajustar mezcla según dinámica de cada canción',s:'',r:'s',eq:'X32'},
     {id:'u3',l:'Video: variar planos — no más de 15 seg en el mismo corte',s:'Intercalar cam 1 · cam 2 · cam 4 (frontal) · cam 5 (batería)',r:'v',eq:'ATEM'},
     {id:'u4',l:'Luces: cambiar escenas según energía de cada canción',s:'Lentas = cálido suave / rápidas = más dinámico',r:'l',eq:'Lightkey'},
-    {id:'u5',l:'Monitorear stream cada 5 min',s:'YouTube Studio y Facebook Live',r:'v',eq:'HyperDeck'},
+    {id:'u5',l:'Monitorear stream cada 5 min',s:'Verificar en Restream dashboard — YouTube y Facebook activos',r:'v',eq:'Restream'},
   ]},
   {id:'sv3',title:'Anuncios / transiciones',badge:'Todos',bc:'green',items:[
     {id:'v1',l:'ProPresenter: slides de anuncios en cue',s:'',r:'p',eq:'ProPresenter 7'},
@@ -407,7 +411,7 @@ t3:[
     {id:'w2',l:'Luces: escena de predicación — enfoque en el pastor',s:'',r:'l',eq:'Lightkey'},
     {id:'w3',l:'Sonido: mic del pastor en primer plano, instrumentos al mínimo',s:'',r:'s',eq:'X32'},
     {id:'w4',l:'Video: close-up del pastor — cam 4 o cam 5 como ángulo complementario',s:'',r:'v',eq:'ATEM'},
-    {id:'w5',l:'Monitorear audio del stream — nivel ideal -12 a -6 dBFS',s:'',r:'v',eq:'HyperDeck'},
+    {id:'w5',l:'Monitorear audio del stream — nivel ideal -12 a -6 dBFS',s:'',r:'v',eq:'Restream'},
   ]},
   {id:'sv5',title:'Altar / momento especial',badge:'Todos',bc:'green',items:[
     {id:'x1',l:'Luces: escena de altar — cálido, tenue',s:'Atmósfera de reverencia e intimidad',r:'l',eq:'Lightkey'},
@@ -419,10 +423,9 @@ t3:[
 t4:[
   {id:'cl1',title:'Cierre del stream',badge:'Video',bc:'blue',items:[
     {id:'y1',l:'ProPresenter: slide de cierre con info de la iglesia',s:'Redes sociales, horarios, dirección',r:'p',eq:'ProPresenter 7'},
-    {id:'y2',l:'1–2 min de cierre antes de detener stream',s:'No cortar abruptamente',r:'v',eq:'HyperDeck'},
-    {id:'y3',l:'Detener stream en YouTube y Facebook',s:'Confirmar "finalizado" en ambas plataformas',r:'v',eq:'HyperDeck'},
-    {id:'y4',l:'Verificar grabación local completa en HyperDeck',s:'Revisar archivos antes de apagar',r:'v',eq:'HyperDeck'},
-    {id:'y5',l:'Descargar archivos de cam 4 y cam 5 (GoPros) si se necesitan',s:'Para Reels, Shorts o contenido de redes',r:'v',eq:'GoPros'},
+    {id:'y2',l:'1–2 min de cierre antes de detener stream',s:'No cortar abruptamente',r:'v',eq:'Restream'},
+    {id:'y3',l:'Detener stream desde Restream',s:'Confirmar "finalizado" en YouTube y Facebook desde el dashboard',r:'v',eq:'Restream'},
+    {id:'y4',l:'Descargar archivos de cam 4 y cam 5 (GoPros) si se necesitan',s:'Para Reels, Shorts o contenido de redes',r:'v',eq:'GoPros'},
   ]},
   {id:'cl2',title:'Apagado — orden inverso estricto',badge:'Orden estricto',bc:'warn',items:[
     {id:'z1',l:'Bajar todos los faders del X32 a cero',s:'Antes de tocar el amp',r:'s',eq:'X32'},
@@ -437,14 +440,14 @@ t4:[
     {id:'z10',l:'Apagar switches L.D. Screen en la pared',s:'',r:'v',eq:'LED principal'},
     {id:'z11',l:'Apagar Mac de ProPresenter',s:'',r:'p',eq:'Mac ProPresenter'},
     {id:'z12',l:'Apagar PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
-    {id:'z13',l:'Apagar switch principal del rack de video',s:'Apaga todo: ATEM · Novastar VX6s · HyperDeck · D-Link',r:'v',eq:'Rack de video'},
+    {id:'z13',l:'Apagar switch principal del rack de video',s:'Apaga todo: ATEM · Novastar VX6s · D-Link',r:'v',eq:'Rack de video'},
     {id:'z14',l:'Apagar máquina de humo — dejar enfriar antes de guardar',s:'',r:'l',eq:'Máquina de humo'},
     {id:'z15',l:'Apagar Lightkey → cerrar app → apagar dimmer rack',s:'En ese orden exacto',r:'l',eq:'Lightkey'},
   ]},
   {id:'cl3',title:'Post-producción y seguimiento',badge:'Líder',bc:'danger',items:[
     {id:'aa1',l:'Registrar incidencias técnicas del servicio',s:'Fallas, ajustes, cambios de último minuto',r:'d',eq:''},
     {id:'aa2',l:'Comunicar ajustes al equipo para el próximo servicio',s:'WhatsApp o reunión breve post-servicio',r:'d',eq:''},
-    {id:'aa3',l:'Subir video del sermón a YouTube (versión completa)',s:'SEO: título, descripción NTV, hashtags ICSE',r:'d',eq:'YouTube'},
+    {id:'aa3',l:'Subir video del sermón a YouTube (versión completa)',s:'SEO: título, descripción NTV, hashtags ICSE · Descargar desde Restream si no se grabó localmente',r:'d',eq:'YouTube'},
     {id:'aa4',l:'Extraer clip para Shorts / Reels si hay frase destacada',s:'DaVinci Resolve o CapCut — TikTok, IG, FB',r:'d',eq:''},
   ]},
 ],
@@ -537,7 +540,7 @@ function showToast(msg){
 
 function build(){
   const banners={
-    t1:`<div class="bn info"><b>Orden de encendido:</b> 1. Mac ProPresenter (solo encender) → 2. Rack de video → 3. PC ATEM → 4. LED + confidence monitor → 5. Abrir ProPresenter → 6. Rack de power + Amp/PA + X32 → 7. Cámaras → 8. Luces + humo → 9. TVs de respaldo → 10. Streaming</div>`,
+    t1:`<div class="bn info"><b>Orden de encendido:</b> 1. Mac ProPresenter → 2. Confidence monitor → 3. LED principal → 4. Rack de video → 5. Mac Lightkey + luces → 6. PC ATEM Software → 7. Abrir ProPresenter → 8. TVs de respaldo → 9. Rack de sonido + X32 → 10. Cámaras → 11. Streaming (Restream)</div>`,
     t2:`<div class="bn miercoles" style="display:none"><b>Miércoles:</b> Formato más reducido. Ajusta según el programa del día.</div>`,
     t4:`<div class="bn warn"><b>Orden de apagado:</b> Faders X32 → Amp/PA (PRIMERO) → X32 → Rack de power → GoPros → URSA → Cerrar ProPresenter → Confidence monitor → TVs respaldo → LED screens → Mac → PC ATEM → Rack de video → Humo → Lightkey</div>`,
   };
