@@ -15,123 +15,175 @@
   --g:#1D9E75;--gl:#E1F5EE;--gd:#0F6E56;
   --w:#BA7517;--wl:#FAEEDA;
   --d:#A32D2D;--dl:#FCEBEB;
-  --bg:#0F1117;--bg2:#181C25;--bg3:#1E2330;
+  --bg:#0F1117;--bg2:#181C25;--bg3:#1E2330;--bg4:#232840;
   --border:#2A2F3E;--border2:#343A4E;
   --txt:#E8EAF0;--txt2:#8B90A4;--txt3:#555B6E;
   --blue:#3B82F6;--blue-l:#1E3A5F;
 }
-html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:15px;overscroll-behavior:none}
+html,body{min-height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:15px;overscroll-behavior:none}
 
-/* LOGIN */
-.login-screen{
-  position:fixed;inset:0;background:var(--bg);
+/* ─── SCREENS ─── */
+.screen{display:none;min-height:100vh}
+.screen.on{display:block}
+
+/* ─── LOGIN ─── */
+#loginScreen{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:32px;z-index:500;
+  min-height:100vh;padding:32px 24px;background:var(--bg);
 }
 .login-logo{
-  width:72px;height:72px;border-radius:20px;background:var(--g);
+  width:80px;height:80px;border-radius:22px;background:var(--g);
   display:flex;align-items:center;justify-content:center;
-  font-size:28px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;
+  font-size:32px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;
   margin-bottom:20px;
 }
-.login-screen h2{font-size:20px;font-weight:600;margin-bottom:6px}
-.login-screen p{font-size:13px;color:var(--txt2);margin-bottom:32px;text-align:center}
-.login-screen input{
-  width:100%;max-width:320px;
-  background:var(--bg3);border:1px solid var(--border2);border-radius:12px;
-  padding:14px 16px;font-size:16px;color:var(--txt);
-  font-family:'DM Sans',sans-serif;margin-bottom:12px;outline:none;
+#loginScreen h2{font-size:22px;font-weight:600;margin-bottom:6px;text-align:center}
+#loginScreen p{font-size:13px;color:var(--txt2);margin-bottom:28px;text-align:center;line-height:1.5}
+#loginScreen input{
+  width:100%;max-width:340px;background:var(--bg3);border:1.5px solid var(--border2);
+  border-radius:14px;padding:15px 16px;font-size:16px;color:var(--txt);
+  font-family:'DM Sans',sans-serif;margin-bottom:16px;outline:none;transition:border .2s;
 }
-.login-screen input:focus{border-color:var(--g)}
-.role-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-  width:100%;max-width:320px;margin-bottom:20px;
-}
+#loginScreen input:focus{border-color:var(--g)}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:340px;margin-bottom:24px}
 .role-card{
-  background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;
-  padding:12px;cursor:pointer;transition:all .15s;text-align:center;
+  background:var(--bg3);border:1.5px solid var(--border);border-radius:14px;
+  padding:14px 10px;cursor:pointer;transition:all .15s;text-align:center;
 }
 .role-card.selected{border-color:var(--g);background:#0D2B1F}
-.role-card .role-icon{font-size:22px;margin-bottom:4px}
-.role-card .role-name{font-size:12px;font-weight:500;color:var(--txt2)}
-.role-card.selected .role-name{color:var(--g)}
+.role-card .ri{font-size:24px;margin-bottom:5px}
+.role-card .rn{font-size:12px;font-weight:500;color:var(--txt2)}
+.role-card.selected .rn{color:var(--g)}
 .login-btn{
-  width:100%;max-width:320px;background:var(--g);border:none;border-radius:12px;
-  padding:14px;font-size:15px;font-weight:600;color:#fff;
-  cursor:pointer;font-family:'DM Sans',sans-serif;
-  opacity:.4;transition:opacity .2s;
+  width:100%;max-width:340px;background:var(--g);border:none;border-radius:14px;
+  padding:16px;font-size:15px;font-weight:600;color:#fff;cursor:pointer;
+  font-family:'DM Sans',sans-serif;opacity:.35;transition:opacity .2s;
 }
 .login-btn.ready{opacity:1}
 
-/* HEADER */
-.app-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;position:sticky;top:0;z-index:100}
-.header-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;gap:10px}
+/* ─── HEADER ─── */
+.app-header{
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:0 16px;position:sticky;top:0;z-index:100;
+}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:11px 0 8px;gap:10px}
 .header-left{display:flex;align-items:center;gap:10px}
-.logo{width:36px;height:36px;border-radius:10px;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;flex-shrink:0}
-.header-title h1{font-size:14px;font-weight:600}
-.header-title p{font-size:11px;color:var(--txt2);margin-top:1px}
+.h-logo{
+  width:36px;height:36px;border-radius:10px;background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;flex-shrink:0;
+}
+.h-title{font-size:14px;font-weight:600}
+.h-sub{font-size:11px;color:var(--txt2);margin-top:1px}
 .header-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
 .svc-toggle{display:flex;background:var(--bg3);border-radius:20px;padding:3px;gap:2px}
 .svc-btn{background:none;border:none;border-radius:16px;padding:4px 10px;font-size:11px;color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
 .svc-btn.on{background:var(--g);color:#fff}
-.user-badge{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--txt2);cursor:pointer}
+.logout-btn{background:none;border:1px solid var(--border2);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif}
 
-/* STATS */
-.stats-row{display:flex;gap:6px;padding:8px 0 10px;overflow-x:auto;scrollbar-width:none}
-.stats-row::-webkit-scrollbar{display:none}
-.stat{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 10px;white-space:nowrap;font-size:11px;color:var(--txt2);flex-shrink:0}
-.stat b{font-weight:600;color:var(--txt)}
-.stat.gs b{color:var(--g)}
-.progress-track{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;margin-bottom:10px}
-.progress-fill{height:100%;background:var(--g);border-radius:2px;transition:width .4s ease;width:0%}
+/* ONLINE BAR */
+.online-bar{display:flex;gap:6px;padding:6px 0 8px;flex-wrap:wrap;min-height:32px}
+.online-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:5px}
+.odot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* TABS */
-.tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;background:var(--bg2);position:sticky;top:115px;z-index:99}
+/* GLOBAL PROGRESS */
+.global-prog{padding:0 0 10px}
+.gp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.gp-label{font-size:11px;color:var(--txt2)}
+.gp-pct{font-size:12px;font-weight:600;color:var(--g);font-family:'DM Mono',monospace}
+.gp-track{height:4px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.gp-fill{height:100%;background:var(--g);border-radius:3px;transition:width .4s ease;width:0%}
+
+/* ─── TABS ─── */
+.tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;background:var(--bg2);position:sticky;top:120px;z-index:99}
 .tabs::-webkit-scrollbar{display:none}
 .tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:12px;font-weight:500;color:var(--txt2);cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:color .2s}
 .tab.on{color:var(--g);border-bottom-color:var(--g)}
 
-/* PANES */
-.pane{display:none;padding:12px 16px 80px}
+/* ─── PANES ─── */
+.pane{display:none;padding:14px 16px 90px}
 .pane.on{display:block}
 
-/* BANNERS */
-.bn{border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.6;margin-bottom:12px}
+/* BANNER */
+.bn{border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.6;margin-bottom:14px}
 .bn.info{background:#0D2B1F;border:1px solid #1A4D35;color:#5DCAA5}
 .bn.warn{background:#2B1E0A;border:1px solid #4D3510;color:#EF9F27}
 .bn.danger{background:#2B0F0F;border:1px solid #4D1A1A;color:#F09595}
 .bn b{font-weight:600}
 
-/* PHASE */
-.phase{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
-.ph-head{padding:12px 14px;background:var(--bg3);display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none}
-.ph-step{font-size:10px;font-weight:600;background:var(--blue-l);color:var(--blue);border-radius:12px;padding:2px 8px;font-family:'DM Mono',monospace;white-space:nowrap}
-.ph-title{font-size:13px;font-weight:600;flex:1;color:var(--txt)}
-.badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;white-space:nowrap}
-.badge.green{background:#0D2B1F;color:#5DCAA5}
-.badge.warn{background:#2B1E0A;color:#EF9F27}
-.badge.danger{background:#2B0F0F;color:#F09595}
-.badge.blue{background:var(--blue-l);color:var(--blue)}
-.ph-prog{font-size:10px;color:var(--txt3);font-family:'DM Mono',monospace;min-width:28px;text-align:right}
-.ph-arrow{font-size:10px;color:var(--txt3);transition:transform .2s;margin-left:2px}
-.phase.open .ph-arrow{transform:rotate(180deg)}
-.ph-body{display:none;border-top:1px solid var(--border)}
-.phase.open .ph-body{display:block}
+/* ─── RUBRO BUTTON ─── */
+.rubro-btn{
+  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  margin-bottom:10px;overflow:hidden;transition:border-color .2s;cursor:pointer;
+}
+.rubro-btn.open{border-color:var(--border2)}
+.rubro-head{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;
+  user-select:none;
+}
+.rubro-icon{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.rubro-icon.green{background:#0D2B1F}
+.rubro-icon.blue{background:var(--blue-l)}
+.rubro-icon.warn{background:#2B1E0A}
+.rubro-icon.danger{background:#2B0F0F}
+.rubro-info{flex:1;min-width:0}
+.rubro-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.rubro-name{font-size:15px;font-weight:600;color:var(--txt)}
+.rubro-count{font-size:11px;font-family:'DM Mono',monospace;color:var(--txt3);flex-shrink:0}
+.rubro-track{height:4px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.rubro-fill{height:100%;border-radius:3px;transition:width .4s ease;width:0%}
+.rubro-fill.green{background:var(--g)}
+.rubro-fill.blue{background:var(--blue)}
+.rubro-fill.warn{background:var(--w)}
+.rubro-fill.danger{background:var(--d)}
+.rubro-arrow{font-size:12px;color:var(--txt3);transition:transform .25s;flex-shrink:0}
+.rubro-btn.open .rubro-arrow{transform:rotate(180deg)}
 
-/* ITEMS */
-.item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s;-webkit-user-select:none;user-select:none;position:relative}
+/* ─── PHASE INSIDE RUBRO ─── */
+.rubro-body{display:none;border-top:1px solid var(--border)}
+.rubro-btn.open .rubro-body{display:block}
+
+.phase-group{border-bottom:1px solid var(--border)}
+.phase-group:last-child{border-bottom:none}
+.ph-label{
+  padding:10px 16px 6px;font-size:11px;font-weight:600;
+  color:var(--txt3);letter-spacing:.05em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+}
+.ph-step-tag{
+  background:var(--blue-l);color:var(--blue);
+  border-radius:10px;padding:1px 7px;font-size:10px;
+  font-family:'DM Mono',monospace;text-transform:none;letter-spacing:0;
+}
+
+/* ─── ITEM ─── */
+.item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 16px;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .1s;
+  -webkit-user-select:none;user-select:none;
+}
 .item:last-child{border-bottom:none}
 .item:active{background:var(--bg3)}
 .item.ck .ilabel{text-decoration:line-through;color:var(--txt3)}
 .item.ck .isub{color:var(--txt3)}
-.checkbox{width:22px;height:22px;min-width:22px;border:1.5px solid var(--border2);border-radius:6px;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.checkbox{
+  width:24px;height:24px;min-width:24px;border:1.5px solid var(--border2);
+  border-radius:7px;margin-top:2px;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;flex-shrink:0;
+}
 .item.ck .checkbox{background:var(--g);border-color:var(--g)}
-.checkmark{font-size:13px;color:#fff;display:none}
+.checkmark{font-size:14px;color:#fff;display:none}
 .item.ck .checkmark{display:block}
 .itext{flex:1;min-width:0}
-.ilabel{font-size:18px;line-height:1.5;color:var(--txt);transition:color .15s}
-.isub{font-size:14px;color:var(--txt2);margin-top:4px;line-height:1.5;transition:color .15s}
-.itags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.ilabel{font-size:17px;line-height:1.5;color:var(--txt);transition:color .15s}
+.isub{font-size:13px;color:var(--txt2);margin-top:4px;line-height:1.5;transition:color .15s}
+.itags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;align-items:center}
 .rtag{font-size:11px;padding:3px 8px;border-radius:5px;font-weight:500}
 .rs{background:#1E3A5F;color:#93C5FD}
 .rv{background:#2D1B69;color:#C4B5FD}
@@ -140,111 +192,82 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'DM Sans
 .rd{background:#2B0F0F;color:#FCA5A5}
 .ra{background:var(--bg3);color:var(--txt2)}
 .etag{font-size:11px;padding:3px 8px;border-radius:5px;background:var(--bg3);color:var(--txt3);border:1px solid var(--border)}
-
-/* WHO CHECKED */
-.who-checked{font-size:10px;color:var(--txt3);margin-top:4px;font-style:italic}
-
-/* ONLINE INDICATOR */
-.online-dot{width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block;margin-right:4px;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-
-/* USERS ONLINE */
-.online-bar{display:flex;gap:6px;padding:6px 0 10px;flex-wrap:wrap}
-.online-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:5px}
+.who-tag{font-size:11px;color:var(--g);margin-top:4px;font-weight:500}
 
 /* FAB */
 .fab{position:fixed;bottom:24px;right:20px;width:50px;height:50px;border-radius:50%;background:var(--bg2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.5);font-size:20px;z-index:200;transition:transform .15s}
 .fab:active{transform:scale(.92)}
 
 /* TOAST */
-.toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--bg2);border:1px solid var(--border2);color:var(--txt);padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;z-index:300;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+.toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--bg2);border:1px solid var(--border2);color:var(--txt);padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;z-index:300}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast.success{background:#0D2B1F;border-color:#1A4D35;color:#5DCAA5}
+.toast.ok{background:#0D2B1F;border-color:#1A4D35;color:#5DCAA5}
 </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
-<div class="login-screen" id="loginScreen">
+<!-- LOGIN -->
+<div id="loginScreen">
   <div class="login-logo">IC</div>
   <h2>ICSE Producción</h2>
-  <p>Ingresa tu nombre y selecciona tu rol para continuar</p>
+  <p>Ingresa tu nombre y selecciona<br>tu rol para continuar</p>
   <input type="text" id="nameInput" placeholder="Tu nombre" maxlength="20" oninput="checkLogin()">
   <div class="role-grid">
-    <div class="role-card" onclick="selectRole('Sonido','🎛')">
-      <div class="role-icon">🎛</div>
-      <div class="role-name">Sonido</div>
-    </div>
-    <div class="role-card" onclick="selectRole('Video','📹')">
-      <div class="role-icon">📹</div>
-      <div class="role-name">Video / ATEM</div>
-    </div>
-    <div class="role-card" onclick="selectRole('ProPresenter','🖥')">
-      <div class="role-icon">🖥</div>
-      <div class="role-name">ProPresenter</div>
-    </div>
-    <div class="role-card" onclick="selectRole('Luces','💡')">
-      <div class="role-icon">💡</div>
-      <div class="role-name">Luces</div>
-    </div>
-    <div class="role-card" onclick="selectRole('Líder','📋')">
-      <div class="role-icon">📋</div>
-      <div class="role-name">Líder</div>
-    </div>
-    <div class="role-card" onclick="selectRole('General','👤')">
-      <div class="role-icon">👤</div>
-      <div class="role-name">General</div>
-    </div>
+    <div class="role-card" onclick="selectRole('Sonido','🎛',this)"><div class="ri">🎛</div><div class="rn">Sonido</div></div>
+    <div class="role-card" onclick="selectRole('Video','📹',this)"><div class="ri">📹</div><div class="rn">Video / ATEM</div></div>
+    <div class="role-card" onclick="selectRole('ProPresenter','🖥',this)"><div class="ri">🖥</div><div class="rn">ProPresenter</div></div>
+    <div class="role-card" onclick="selectRole('Luces','💡',this)"><div class="ri">💡</div><div class="rn">Luces</div></div>
+    <div class="role-card" onclick="selectRole('Líder','📋',this)"><div class="ri">📋</div><div class="rn">Líder</div></div>
+    <div class="role-card" onclick="selectRole('General','👤',this)"><div class="ri">👤</div><div class="rn">General</div></div>
   </div>
-  <button class="login-btn" id="loginBtn" onclick="doLogin()">Entrar al checklist</button>
+  <button class="login-btn" id="loginBtn" onclick="doLogin()">Entrar al checklist →</button>
 </div>
 
 <!-- MAIN APP -->
-<div id="mainApp" style="display:none">
-<div class="app-header">
-  <div class="header-top">
-    <div class="header-left">
-      <div class="logo">IC</div>
-      <div class="header-title">
-        <h1>Producción — ICSE</h1>
-        <p id="userLabel">Cargando...</p>
+<div id="mainApp" class="screen">
+  <div class="app-header">
+    <div class="header-top">
+      <div class="header-left">
+        <div class="h-logo">IC</div>
+        <div>
+          <div class="h-title">ICSE Producción</div>
+          <div class="h-sub" id="userLabel">—</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="svc-toggle">
+          <button class="svc-btn on" onclick="setSvc('d',this)">Dom</button>
+          <button class="svc-btn" onclick="setSvc('m',this)">Mié</button>
+        </div>
+        <button class="logout-btn" onclick="logout()">Salir</button>
       </div>
     </div>
-    <div class="header-right">
-      <div class="svc-toggle">
-        <button class="svc-btn on" onclick="setSvc('d',this)">Dom</button>
-        <button class="svc-btn" onclick="setSvc('m',this)">Mié</button>
+    <div class="online-bar" id="onlineBar"></div>
+    <div class="global-prog">
+      <div class="gp-row">
+        <span class="gp-label" id="gpLabel">0 de 0 completados</span>
+        <span class="gp-pct" id="gpPct">0%</span>
       </div>
-      <div class="user-badge" onclick="logout()">Salir</div>
+      <div class="gp-track"><div class="gp-fill" id="gpFill"></div></div>
     </div>
   </div>
-  <div class="online-bar" id="onlineBar"></div>
-  <div class="stats-row">
-    <div class="stat">Total: <b id="st">0</b></div>
-    <div class="stat gs">Listos: <b id="sd">0</b></div>
-    <div class="stat">Restantes: <b id="sr">0</b></div>
-    <div class="stat">Progreso: <b id="sp">0%</b></div>
+
+  <div class="tabs">
+    <button class="tab on" onclick="setTab('t1',this)">🔌 Encendido</button>
+    <button class="tab" onclick="setTab('t2',this)">⚙️ Pre-servicio</button>
+    <button class="tab" onclick="setTab('t3',this)">▶ Servicio</button>
+    <button class="tab" onclick="setTab('t4',this)">⏹ Cierre</button>
   </div>
-  <div class="progress-track"><div class="progress-fill" id="pbar"></div></div>
-</div>
 
-<div class="tabs">
-  <button class="tab on" onclick="setTab('t1',this)">🔌 Encendido</button>
-  <button class="tab" onclick="setTab('t2',this)">⚙️ Pre-servicio</button>
-  <button class="tab" onclick="setTab('t3',this)">▶ Servicio</button>
-  <button class="tab" onclick="setTab('t4',this)">⏹ Cierre</button>
-</div>
-
-<div id="t1" class="pane on"></div>
-<div id="t2" class="pane"></div>
-<div id="t3" class="pane"></div>
-<div id="t4" class="pane"></div>
+  <div id="t1" class="pane on"></div>
+  <div id="t2" class="pane"></div>
+  <div id="t3" class="pane"></div>
+  <div id="t4" class="pane"></div>
 </div>
 
 <div class="fab" onclick="confirmReset()">↺</div>
 <div class="toast" id="toast"></div>
 
-<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
@@ -265,380 +288,399 @@ const db = getDatabase(app);
 const RT={s:'rs',v:'rv',l:'rl',p:'rp',d:'rd',a:'ra'};
 const RL={s:'Sonido',v:'Video',l:'Luces',p:'ProPresenter',d:'Líder',a:'Todos'};
 
-const PHASES={
-t1:[
-  {id:'e1',step:'1',title:'Mac de ProPresenter — solo encender',badge:'ProPresenter',bc:'green',items:[
-    {id:'a1',l:'Encender la Mac de ProPresenter 7',s:'Solo encender y esperar arranque — NO abrir ProPresenter todavía',r:'p',eq:'Mac ProPresenter'},
-  ]},
-  {id:'e4a',step:'2',title:'Confidence monitor',badge:'ProPresenter',bc:'warn',items:[
-    {id:'d2',l:'Encender confidence monitor — área de producción',s:'Stage Display · Debe estar ON antes de abrir ProPresenter',r:'p',eq:'Confidence Monitor'},
-  ]},
-  {id:'e4b',step:'3',title:'Pantalla LED principal',badge:'Video',bc:'warn',items:[
-    {id:'d1',l:'Encender switches L.D. Screen en la pared',s:'Esperar que el LED caliente y estabilice la imagen',r:'v',eq:'LED principal'},
-  ]},
-  {id:'e2',step:'4',title:'Rack de video',badge:'Video',bc:'blue',items:[
-    {id:'b1',l:'Encender el switch principal del rack de video',s:'Enciende todo: ATEM · Novastar VX6s · D-Link · Monitor de preview',r:'v',eq:'Rack de video'},
-    {id:'b2',l:'Esperar boot completo del ATEM y Novastar VX6s',s:'ATEM: LEDs estables · Novastar: pantalla activa sin errores',r:'v',eq:'ATEM / Novastar'},
-  ]},
-  {id:'e8',step:'5',title:'Mac de Lightkey — luces',badge:'Luces',bc:'green',items:[
-    {id:'h1',l:'Abrir Lightkey — cargar preset del servicio',s:'Las luces tienen corriente directa · Preset: Domingo o Miércoles',r:'l',eq:'Lightkey'},
-    {id:'h2',l:'Bajar brillo general al 70% en Lightkey',s:'Antes de activar cualquier escena — protege los fixtures',r:'l',eq:'Lightkey'},
-    {id:'h3',l:'Verificar que todos los fixtures responden',s:'Revisar grupo por grupo desde Lightkey',r:'l',eq:'Lightkey'},
-    {id:'h4',l:'Encender máquina de humo — verificar nivel de fluido',s:'Confirmar que produce humo correctamente antes del servicio',r:'l',eq:'Máquina de humo'},
-  ]},
-  {id:'e3',step:'6',title:'PC del ATEM Software Control',badge:'Video',bc:'blue',items:[
-    {id:'c1',l:'Encender la PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
-    {id:'c2',l:'Abrir ATEM Software Control — verificar conexión',s:'Todas las entradas visibles en el Multiview',r:'v',eq:'ATEM Software'},
-  ]},
-  {id:'e5',step:'7',title:'Abrir ProPresenter 7',badge:'ProPresenter',bc:'green',items:[
-    {id:'e1',l:'Abrir ProPresenter 7 en la Mac',s:'Con LED y confidence monitor encendidos — los detecta correctamente',r:'p',eq:'ProPresenter 7'},
-    {id:'e2x',l:'Verificar que ProPresenter detecta los outputs',s:'LED principal (via Novastar VX6s) · Confidence monitor',r:'p',eq:'ProPresenter 7'},
-  ]},
-  {id:'e9',step:'8',title:'TVs de respaldo — encender y verificar señal',badge:'Video',bc:'blue',items:[
-    {id:'i1',l:'Encender TV — overflow',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen',r:'v',eq:'TV Overflow'},
-    {id:'i2',l:'Encender TV — cuarto de infantes',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen',r:'v',eq:'TV Infantes'},
-    {id:'i3',l:'Encender TV — área lateral del santuario',s:'Ir físicamente · Verificar señal · Dejar en MUTE',r:'v',eq:'TV Lateral'},
-    {id:'i4',l:'Encender TV — cuarto de bienvenida / producción',s:'Ir físicamente · Verificar señal · Revisar volumen',r:'v',eq:'TV Bienvenida'},
-  ]},
-  {id:'e6',step:'9',title:'Rack de sonido',badge:'Sonido',bc:'green',items:[
-    {id:'f1',l:'Encender consola Behringer X32',s:'Primero siempre — esperar boot completo aprox. 30 seg',r:'s',eq:'X32'},
-    {id:'f2',l:'Verificar escena correcta cargada en X32',s:'Escena: Domingo o Miércoles — revisar nombre en pantalla',r:'s',eq:'X32'},
-    {id:'f3',l:'Verificar que todos los faders del X32 están en cero',s:'Antes de subir cualquier nivel',r:'s',eq:'X32'},
-    {id:'f4',l:'Encender el switch del rack de power',s:'Enciende: Shure PSM in-ears · 4 receptores inalámbricos Shure',r:'s',eq:'Rack de power'},
-    {id:'f5',l:'Verificar Shure PSM y 4 receptores activos',s:'Pantallas amarillas ON · canal y frecuencia visible en cada receptor',r:'s',eq:'Shure PSM / mics'},
-    {id:'f6',l:'Encender el switch del amp / PA — ÚLTIMO',s:'Switch separado dentro del mismo rack — siempre el último en encender',r:'s',eq:'Amp / PA'},
-  ]},
-  {id:'e7',step:'10',title:'Cámaras',badge:'Video',bc:'blue',items:[
-    {id:'g1',l:'Encender cam 1 — URSA Broadcast G2 (plano general)',s:'Verificar señal SDI en ATEM input 1',r:'v',eq:'URSA cam 1'},
-    {id:'g2',l:'Encender cam 2 — URSA Broadcast G2 (plano medio / close-up)',s:'Verificar señal SDI en ATEM input 2',r:'v',eq:'URSA cam 2'},
-    {id:'g3',l:'Encender cam 4 — GoPro 1 (toma frontal, rack de luces)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 1 · Cam 4'},
-    {id:'g4',l:'Encender cam 5 — GoPro 2 (sobre la batería)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 2 · Cam 5'},
-    {id:'g5',l:'Confirmar 4 señales en ATEM Multiview',s:'Cam 1 · Cam 2 · Cam 4 (frontal) · Cam 5 (batería)',r:'v',eq:'ATEM'},
-  ]},
-  {id:'e10',step:'11',title:'Streaming — Restream',badge:'Video',bc:'blue',items:[
-    {id:'j1',l:'Verificar internet — mínimo 10 Mbps upload',s:'Usar speedtest.net antes de configurar',r:'v',eq:'Red'},
-    {id:'j2',l:'Verificar que Restream está configurado y en línea',s:'Confirmar títulos del stream · YouTube y Facebook activos',r:'v',eq:'Restream'},
-    {id:'j3',l:'Confirmar que el timer de ProPresenter arrancará el stream',s:'Domingo: 11:00 AM · Miércoles: 7:10 PM · No iniciar manualmente',r:'v',eq:'Restream'},
-  ]},
-],
-t2:[
-  {id:'p1',title:'Prueba de sonido — instrumentos',badge:'Sonido',bc:'green',items:[
-    {id:'k1',l:'Canal de batería — bombo, caja, hi-hat, overheads',s:'Sin clipping en cada subchannel',r:'s',eq:'X32'},
-    {id:'k2',l:'Canal de bajo (DI directo)',s:'EQ limpio — sin boom excesivo',r:'s',eq:'X32'},
-    {id:'k3',l:'Canal de piano / teclado',s:'Confirmar estéreo L/R o mono',r:'s',eq:'X32'},
-    {id:'k4',l:'Canal de guitarra eléctrica',s:'Nivel y tono confirmados',r:'s',eq:'X32'},
-    {id:'k5',l:'Balance general de instrumentos antes de agregar voces',s:'',r:'s',eq:'X32'},
-  ]},
-  {id:'p2',title:'Prueba de sonido — micrófonos Shure',badge:'Sonido',bc:'green',items:[
-    {id:'l1',l:'Mic 1 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 1'},
-    {id:'l2',l:'Mic 2 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 2'},
-    {id:'l3',l:'Mic 3 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 3'},
-    {id:'l4',l:'Mic 4 (pastor) — voz, ganancia y frecuencia',s:'Nivel consistente con los vocalistas',r:'s',eq:'Shure mic 4'},
-    {id:'l5',l:'Prueba de in-ears Shure PSM con todo el equipo',s:'Cada músico confirma su mezcla personal',r:'s',eq:'Shure PSM'},
-    {id:'l6',l:'Verificar señal de audio hacia Restream',s:'Nivel nominal -12 dBFS — confirmar en Restream que llega audio',r:'s',eq:'UMC202HD'},
-  ]},
-  {id:'p3',title:'Prueba de video — cámaras',badge:'Video',bc:'blue',items:[
-    {id:'m1',l:'Balance de blancos cam 1 y cam 2 (URSA G2)',s:'WB manual — mismo valor en ambas',r:'v',eq:'URSA G2'},
-    {id:'m2',l:'Exposición cam 1 y cam 2',s:'Sin sobreexposición en rostros — valores similares',r:'v',eq:'URSA G2'},
-    {id:'m3',l:'Encuadre cam 1 — plano general de plataforma',s:'',r:'v',eq:'URSA cam 1'},
-    {id:'m4',l:'Encuadre cam 2 — plano medio / close-up',s:'',r:'v',eq:'URSA cam 2'},
-    {id:'m5',l:'Verificar encuadre cam 4 — GoPro 1 (frontal, rack de luces)',s:'Ángulo fijo · sin obstrucciones',r:'v',eq:'GoPro 1 · Cam 4'},
-    {id:'m6',l:'Verificar encuadre cam 5 — GoPro 2 (sobre la batería)',s:'Ángulo fijo · sin obstrucciones',r:'v',eq:'GoPro 2 · Cam 5'},
-  ]},
-  {id:'p4',title:'Novastar VX6s — pantalla LED',badge:'Video',bc:'blue',items:[
-    {id:'n1',l:'Verificar que VX6s detecta el LED wall sin errores',s:'',r:'v',eq:'Novastar VX6s'},
-    {id:'n2',l:'Confirmar resolución de salida coincide con ProPresenter',s:'Sin corte de bordes ni overscan',r:'v',eq:'Novastar VX6s'},
-    {id:'n3',l:'Verificar imagen en LED wall — color, nitidez y alineación',s:'Sin franjas · sin píxeles muertos · sin distorsión',r:'v',eq:'Novastar VX6s'},
-  ]},
-  {id:'p5',title:'ProPresenter 7 — contenido',badge:'ProPresenter',bc:'green',items:[
-    {id:'o1',l:'Abrir playlist del servicio',s:'Orden: alabanza → anuncios → sermón → altar → cierre',r:'p',eq:'ProPresenter 7'},
-    {id:'o2',l:'Verificar letras de canciones completas y correctas',s:'Revisar con el setlist del líder de alabanza',r:'p',eq:'ProPresenter 7'},
-    {id:'o3',l:'Verificar versículos y textos del sermón',s:'Confirmar con el pastor',r:'p',eq:'ProPresenter 7'},
-    {id:'o4',l:'Verificar Stage Display en confidence monitor',s:'Letra siguiente y reloj visibles',r:'p',eq:'Confidence Monitor'},
-    {id:'o5',l:'Verificar señal en las 4 TVs de respaldo',s:'Overflow · Infantes · Lateral · Bienvenida',r:'v',eq:'TVs respaldo'},
-    {id:'o6',l:'Activar loop de slides de pre-servicio',s:'Corriendo al llegar la congregación',r:'p',eq:'ProPresenter 7'},
-  ]},
-  {id:'p6',title:'Iluminación — Lightkey',badge:'Luces',bc:'green',items:[
-    {id:'q1',l:'Activar escena de pre-servicio',s:'Ambiente suave mientras llega la congregación',r:'l',eq:'Lightkey'},
-    {id:'q2',l:'Verificar que luces no generan reflejo en cámaras',s:'Reposicionar si hay flare visible en monitor',r:'l',eq:'Lightkey'},
-    {id:'q3',l:'Confirmar escenas: alabanza, predicación, altar',s:'Repaso rápido de cada escena',r:'l',eq:'Lightkey'},
-    {id:'q4',l:'Verificar máquina de humo lista para el servicio',s:'Precalentada y con fluido suficiente',r:'l',eq:'Máquina de humo'},
-  ]},
-  {id:'p7',title:'Pre-streaming — Restream',badge:'Video',bc:'blue',items:[
-    {id:'r1',l:'Verificar que Restream está en línea y configurado',s:'Confirmar conexión a YouTube y Facebook desde el dashboard',r:'v',eq:'Restream'},
-    {id:'r2',l:'Configurar título del stream en Restream',s:'Nombre del sermón + fecha + pastor — se aplica a YouTube y Facebook',r:'v',eq:'Restream'},
-    {id:'r3',l:'Confirmar que el stream arrancará con el timer de ProPresenter',s:'No iniciar manualmente — el timer lo activa automáticamente',r:'v',eq:'Restream'},
-  ]},
-  {id:'p8',title:'Coordinación final — líder',badge:'Líder',bc:'danger',items:[
-    {id:'s1',l:'Reunión de 5 min con todo el equipo técnico',s:'Confirmar orden del servicio y señales de comunicación',r:'d',eq:''},
-    {id:'s2',l:'Confirmar setlist final con líder de alabanza',s:'Actualizar ProPresenter si hay cambios',r:'d',eq:''},
-    {id:'s3',l:'Confirmar tema y textos con el pastor',s:'Ajustar slides si es necesario',r:'d',eq:''},
-  ]},
-],
-t3:[
-  {id:'sv1',title:'Inicio del servicio',badge:'Todos',bc:'green',items:[
-    {id:'t1',l:'Verificar timer de cuenta regresiva activo en ProPresenter',s:'Domingo: stream arranca automático a las 11:00 AM · Miércoles: 7:10 PM',r:'p',eq:'ProPresenter 7'},
-    {id:'t2',l:'Confirmar que el stream arrancó en YouTube y Facebook',s:'Verificar en Restream dashboard que ambas plataformas están activas',r:'v',eq:'Restream'},
-    {id:'t3',l:'Activar escena de alabanza en Lightkey',s:'Domingo: luces de casa se apagan automáticamente a las 11:04 AM · Miércoles: manual',r:'l',eq:'Lightkey'},
-    {id:'t4',l:'ProPresenter: diapositiva de bienvenida',s:'Luego letras en cue del líder de alabanza',r:'p',eq:'ProPresenter 7'},
-    {id:'t5',l:'ATEM: plano general — cam 1 (URSA)',s:'Cortar a cam 2, cam 4 o cam 5 según el movimiento',r:'v',eq:'ATEM'},
-    {id:'t6',l:'Sonido: confirmar niveles de apertura estables',s:'Vocalistas, instrumentos e in-ears balanceados',r:'s',eq:'X32'},
-  ]},
-  {id:'sv2',title:'Bloque de alabanza',badge:'Todos',bc:'green',items:[
-    {id:'u1',l:'ProPresenter: avanzar letras en tiempo real',s:'Seguir al líder — nunca adelantarse',r:'p',eq:'ProPresenter 7'},
-    {id:'u2',l:'Sonido: ajustar mezcla según dinámica de cada canción',s:'',r:'s',eq:'X32'},
-    {id:'u3',l:'Video: variar planos — no más de 15 seg en el mismo corte',s:'Intercalar cam 1 · cam 2 · cam 4 (frontal) · cam 5 (batería)',r:'v',eq:'ATEM'},
-    {id:'u4',l:'Luces: cambiar escenas según energía de cada canción',s:'Lentas = cálido suave / rápidas = más dinámico',r:'l',eq:'Lightkey'},
-    {id:'u5',l:'Monitorear stream cada 5 min',s:'Verificar en Restream dashboard — YouTube y Facebook activos',r:'v',eq:'Restream'},
-  ]},
-  {id:'sv3',title:'Anuncios / transiciones',badge:'Todos',bc:'green',items:[
-    {id:'v1',l:'ProPresenter: slides de anuncios en cue',s:'',r:'p',eq:'ProPresenter 7'},
-    {id:'v2',l:'Luces: escena neutra para anuncios',s:'Iluminación pareja, no dramática',r:'l',eq:'Lightkey'},
-    {id:'v3',l:'Video: plano más abierto — presentador bien encuadrado',s:'',r:'v',eq:'ATEM'},
-    {id:'v4',l:'Sonido: subir mic presentador — bajar música de fondo',s:'Sin feedback con el cambio',r:'s',eq:'X32'},
-    {id:'v5',l:'Cuando entra el pastor — verificar que su mic está activo y con volumen',s:'Confirmar nivel en X32 antes de que hable',r:'s',eq:'Shure mic 4'},
-  ]},
-  {id:'sv4',title:'Predicación / sermón',badge:'Todos',bc:'green',items:[
-    {id:'w1',l:'ProPresenter: versículos en cue del pastor',s:'Atento — no adelantarse ni rezagarse',r:'p',eq:'ProPresenter 7'},
-    {id:'w2',l:'Luces: escena de predicación — enfoque en el pastor',s:'',r:'l',eq:'Lightkey'},
-    {id:'w3',l:'Sonido: mic del pastor en primer plano, instrumentos al mínimo',s:'',r:'s',eq:'X32'},
-    {id:'w4',l:'Video: close-up del pastor — cam 4 o cam 5 como ángulo complementario',s:'',r:'v',eq:'ATEM'},
-    {id:'w5',l:'Monitorear audio del stream — nivel ideal -12 a -6 dBFS',s:'',r:'v',eq:'Restream'},
-  ]},
-  {id:'sv5',title:'Altar / momento especial',badge:'Todos',bc:'green',items:[
-    {id:'x1',l:'Luces: escena de altar — cálido, tenue',s:'Atmósfera de reverencia e intimidad',r:'l',eq:'Lightkey'},
-    {id:'x2',l:'Sonido: música suave — solo mic del pastor activo',s:'',r:'s',eq:'X32'},
-    {id:'x3',l:'ProPresenter: slide de altar o pantalla en negro',s:'Según decisión del pastor en el momento',r:'p',eq:'ProPresenter 7'},
-    {id:'x4',l:'Video: planos contemplativos — sin cortes bruscos',s:'',r:'v',eq:'ATEM'},
-  ]},
-],
-t4:[
-  {id:'cl1',title:'Cierre del stream',badge:'Video',bc:'blue',items:[
-    {id:'y1',l:'ProPresenter: slide de cierre con info de la iglesia',s:'Redes sociales, horarios, dirección',r:'p',eq:'ProPresenter 7'},
-    {id:'y2',l:'1–2 min de cierre antes de detener stream',s:'No cortar abruptamente',r:'v',eq:'Restream'},
-    {id:'y3',l:'Detener stream desde Restream',s:'Confirmar "finalizado" en YouTube y Facebook',r:'v',eq:'Restream'},
-    {id:'y4',l:'Descargar archivos de cam 4 y cam 5 si se necesitan',s:'Para Reels, Shorts o contenido de redes',r:'v',eq:'GoPros'},
-  ]},
-  {id:'cl2',title:'Apagado — orden inverso estricto',badge:'Orden estricto',bc:'warn',items:[
-    {id:'z1',l:'Bajar todos los faders del X32 a cero',s:'Antes de tocar cualquier equipo',r:'s',eq:'X32'},
-    {id:'z2',l:'Apagar amp / PA — switch separado — PRIMERO',s:'Siempre el primero al apagar — protege las bocinas',r:'s',eq:'Amp / PA'},
-    {id:'z3',l:'Apagar rack de power del rack de sonido',s:'Un solo switch apaga Shure PSM y los 4 receptores',r:'s',eq:'Rack de power'},
-    {id:'z4',l:'Apagar consola X32 — ÚLTIMA',s:'La mixer siempre va de última al apagar · Guardar escena si hay ajustes',r:'s',eq:'X32'},
-    {id:'z5',l:'Apagar cam 4 (GoPro 1) y cam 5 (GoPro 2)',s:'Conectar a carga si batería quedó baja',r:'v',eq:'GoPros'},
-    {id:'z6',l:'Apagar cam 1 y cam 2 (URSA Broadcast G2)',s:'Poner tapas de lente',r:'v',eq:'URSA G2'},
-    {id:'z7',l:'Cerrar ProPresenter 7',s:'Guardar proyecto si hay cambios pendientes',r:'p',eq:'ProPresenter 7'},
-    {id:'z8',l:'Apagar confidence monitor',s:'',r:'p',eq:'Confidence Monitor'},
-    {id:'z9',l:'Apagar TVs de respaldo (ir físicamente)',s:'Bienvenida · Lateral · Infantes · Overflow',r:'v',eq:'TVs respaldo'},
-    {id:'z10',l:'Apagar switches L.D. Screen en la pared',s:'',r:'v',eq:'LED principal'},
-    {id:'z11',l:'Apagar Mac de ProPresenter',s:'',r:'p',eq:'Mac ProPresenter'},
-    {id:'z12',l:'Apagar PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
-    {id:'z13',l:'Apagar switch principal del rack de video',s:'Apaga todo: ATEM · Novastar VX6s · D-Link',r:'v',eq:'Rack de video'},
-    {id:'z14',l:'Apagar máquina de humo — dejar enfriar antes de guardar',s:'',r:'l',eq:'Máquina de humo'},
-    {id:'z15',l:'Apagar Lightkey → cerrar app → apagar dimmer rack',s:'En ese orden exacto',r:'l',eq:'Lightkey'},
-  ]},
-  {id:'cl3',title:'Post-producción y seguimiento',badge:'Líder',bc:'danger',items:[
-    {id:'aa1',l:'Registrar incidencias técnicas del servicio',s:'Fallas, ajustes, cambios de último minuto',r:'d',eq:''},
-    {id:'aa2',l:'Comunicar ajustes al equipo para el próximo servicio',s:'WhatsApp o reunión breve post-servicio',r:'d',eq:''},
-    {id:'aa3',l:'Subir video del sermón a YouTube (versión completa)',s:'SEO: título, descripción NTV, hashtags ICSE · Descargar desde Restream si aplica',r:'d',eq:'YouTube'},
-    {id:'aa4',l:'Extraer clip para Shorts / Reels si hay frase destacada',s:'DaVinci Resolve o CapCut — TikTok, IG, FB',r:'d',eq:''},
-  ]},
-],
+// Rubritos — cada rubro agrupa fases relacionadas por área
+const RUBROS = {
+  t1: [
+    { id:'rb_propre', icon:'🖥', label:'ProPresenter', color:'green', phases:[
+      {id:'e1',step:'1',title:'Mac de ProPresenter — solo encender',items:[
+        {id:'a1',l:'Encender la Mac de ProPresenter 7',s:'Solo encender y esperar arranque — NO abrir ProPresenter todavía',r:'p',eq:'Mac ProPresenter'},
+      ]},
+      {id:'e4a',step:'2',title:'Confidence monitor',items:[
+        {id:'d2',l:'Encender confidence monitor — área de producción',s:'Stage Display · Debe estar ON antes de abrir ProPresenter',r:'p',eq:'Confidence Monitor'},
+      ]},
+      {id:'e4b',step:'3',title:'Pantalla LED principal',items:[
+        {id:'d1',l:'Encender switches L.D. Screen en la pared',s:'Esperar que el LED caliente y estabilice la imagen',r:'v',eq:'LED principal'},
+      ]},
+      {id:'e5',step:'7',title:'Abrir ProPresenter 7',items:[
+        {id:'e1',l:'Abrir ProPresenter 7 en la Mac',s:'Con LED y confidence monitor encendidos — los detecta correctamente',r:'p',eq:'ProPresenter 7'},
+        {id:'e2x',l:'Verificar que ProPresenter detecta los outputs',s:'LED principal (via Novastar VX6s) · Confidence monitor',r:'p',eq:'ProPresenter 7'},
+      ]},
+    ]},
+    { id:'rb_video', icon:'📹', label:'Video & ATEM', color:'blue', phases:[
+      {id:'e2',step:'4',title:'Rack de video',items:[
+        {id:'b1',l:'Encender el switch principal del rack de video',s:'Enciende todo: ATEM · Novastar VX6s · D-Link · Monitor de preview',r:'v',eq:'Rack de video'},
+        {id:'b2',l:'Esperar boot completo del ATEM y Novastar VX6s',s:'ATEM: LEDs estables · Novastar: pantalla activa sin errores',r:'v',eq:'ATEM / Novastar'},
+      ]},
+      {id:'e3',step:'6',title:'PC del ATEM Software Control',items:[
+        {id:'c1',l:'Encender la PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
+        {id:'c2',l:'Abrir ATEM Software Control — verificar conexión',s:'Todas las entradas visibles en el Multiview',r:'v',eq:'ATEM Software'},
+      ]},
+      {id:'e9',step:'8',title:'TVs de respaldo',items:[
+        {id:'i1',l:'Encender TV — overflow',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen',r:'v',eq:'TV Overflow'},
+        {id:'i2',l:'Encender TV — cuarto de infantes',s:'Ir físicamente · HDMI 3 · Verificar señal · Revisar volumen',r:'v',eq:'TV Infantes'},
+        {id:'i3',l:'Encender TV — área lateral del santuario',s:'Ir físicamente · Verificar señal · Dejar en MUTE',r:'v',eq:'TV Lateral'},
+        {id:'i4',l:'Encender TV — cuarto de bienvenida / producción',s:'Ir físicamente · Verificar señal · Revisar volumen',r:'v',eq:'TV Bienvenida'},
+      ]},
+      {id:'e7',step:'10',title:'Cámaras',items:[
+        {id:'g1',l:'Encender cam 1 — URSA Broadcast G2 (plano general)',s:'Verificar señal SDI en ATEM input 1',r:'v',eq:'URSA cam 1'},
+        {id:'g2',l:'Encender cam 2 — URSA Broadcast G2 (plano medio)',s:'Verificar señal SDI en ATEM input 2',r:'v',eq:'URSA cam 2'},
+        {id:'g3',l:'Encender cam 4 — GoPro 1 (toma frontal, rack de luces)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 1 · Cam 4'},
+        {id:'g4',l:'Encender cam 5 — GoPro 2 (sobre la batería)',s:'Verificar modo video y batería >80%',r:'v',eq:'GoPro 2 · Cam 5'},
+        {id:'g5',l:'Confirmar 4 señales en ATEM Multiview',s:'Cam 1 · Cam 2 · Cam 4 (frontal) · Cam 5 (batería)',r:'v',eq:'ATEM'},
+      ]},
+      {id:'e10',step:'11',title:'Streaming — Restream',items:[
+        {id:'j1',l:'Verificar internet — mínimo 10 Mbps upload',s:'Usar speedtest.net antes de configurar',r:'v',eq:'Red'},
+        {id:'j2',l:'Verificar que Restream está configurado y en línea',s:'Confirmar títulos · YouTube y Facebook activos',r:'v',eq:'Restream'},
+        {id:'j3',l:'Confirmar que el timer de ProPresenter arrancará el stream',s:'Domingo: 11:00 AM · Miércoles: 7:10 PM · No iniciar manualmente',r:'v',eq:'Restream'},
+      ]},
+    ]},
+    { id:'rb_luces', icon:'💡', label:'Luces', color:'warn', phases:[
+      {id:'e8',step:'5',title:'Mac de Lightkey — luces',items:[
+        {id:'h1',l:'Abrir Lightkey — cargar preset del servicio',s:'Las luces tienen corriente directa · Preset: Domingo o Miércoles',r:'l',eq:'Lightkey'},
+        {id:'h2',l:'Bajar brillo general al 70% en Lightkey',s:'Antes de activar cualquier escena — protege los fixtures',r:'l',eq:'Lightkey'},
+        {id:'h3',l:'Verificar que todos los fixtures responden',s:'Revisar grupo por grupo desde Lightkey',r:'l',eq:'Lightkey'},
+        {id:'h4',l:'Encender máquina de humo — verificar nivel de fluido',s:'Confirmar que produce humo correctamente antes del servicio',r:'l',eq:'Máquina de humo'},
+      ]},
+    ]},
+    { id:'rb_sonido', icon:'🎛', label:'Sonido', color:'green', phases:[
+      {id:'e6',step:'9',title:'Rack de sonido',items:[
+        {id:'f1',l:'Encender consola Behringer X32',s:'Primero siempre — esperar boot completo aprox. 30 seg',r:'s',eq:'X32'},
+        {id:'f2',l:'Verificar escena correcta cargada en X32',s:'Escena: Domingo o Miércoles — revisar nombre en pantalla',r:'s',eq:'X32'},
+        {id:'f3',l:'Verificar que todos los faders del X32 están en cero',s:'Antes de subir cualquier nivel',r:'s',eq:'X32'},
+        {id:'f4',l:'Encender el switch del rack de power',s:'Enciende: Shure PSM in-ears · 4 receptores inalámbricos Shure',r:'s',eq:'Rack de power'},
+        {id:'f5',l:'Verificar Shure PSM y 4 receptores activos',s:'Pantallas amarillas ON · canal y frecuencia visible en cada receptor',r:'s',eq:'Shure PSM / mics'},
+        {id:'f6',l:'Encender el switch del amp / PA — ÚLTIMO',s:'Switch separado · siempre el último en encender',r:'s',eq:'Amp / PA'},
+      ]},
+    ]},
+  ],
+  t2: [
+    { id:'rb_pre_sonido', icon:'🎛', label:'Prueba de sonido', color:'green', phases:[
+      {id:'p1',title:'Instrumentos',items:[
+        {id:'k1',l:'Canal de batería — bombo, caja, hi-hat, overheads',s:'Sin clipping en cada subchannel',r:'s',eq:'X32'},
+        {id:'k2',l:'Canal de bajo (DI directo)',s:'EQ limpio — sin boom excesivo',r:'s',eq:'X32'},
+        {id:'k3',l:'Canal de piano / teclado',s:'Confirmar estéreo L/R o mono',r:'s',eq:'X32'},
+        {id:'k4',l:'Canal de guitarra eléctrica',s:'Nivel y tono confirmados',r:'s',eq:'X32'},
+        {id:'k5',l:'Balance general de instrumentos antes de agregar voces',s:'',r:'s',eq:'X32'},
+      ]},
+      {id:'p2',title:'Micrófonos Shure',items:[
+        {id:'l1',l:'Mic 1 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 1'},
+        {id:'l2',l:'Mic 2 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 2'},
+        {id:'l3',l:'Mic 3 — voz, ganancia y frecuencia',s:'Sin feedback ni interferencia de RF',r:'s',eq:'Shure mic 3'},
+        {id:'l4',l:'Mic 4 (pastor) — voz, ganancia y frecuencia',s:'Nivel consistente con los vocalistas',r:'s',eq:'Shure mic 4'},
+        {id:'l5',l:'Prueba de in-ears Shure PSM con todo el equipo',s:'Cada músico confirma su mezcla personal',r:'s',eq:'Shure PSM'},
+        {id:'l6',l:'Verificar señal de audio hacia Restream',s:'Nivel nominal -12 dBFS',r:'s',eq:'UMC202HD'},
+      ]},
+    ]},
+    { id:'rb_pre_video', icon:'📹', label:'Prueba de video', color:'blue', phases:[
+      {id:'p3',title:'Cámaras',items:[
+        {id:'m1',l:'Balance de blancos cam 1 y cam 2 (URSA G2)',s:'WB manual — mismo valor en ambas',r:'v',eq:'URSA G2'},
+        {id:'m2',l:'Exposición cam 1 y cam 2',s:'Sin sobreexposición en rostros — valores similares',r:'v',eq:'URSA G2'},
+        {id:'m3',l:'Encuadre cam 1 — plano general de plataforma',s:'',r:'v',eq:'URSA cam 1'},
+        {id:'m4',l:'Encuadre cam 2 — plano medio / close-up',s:'',r:'v',eq:'URSA cam 2'},
+        {id:'m5',l:'Verificar encuadre cam 4 — GoPro 1 (frontal, rack luces)',s:'Ángulo fijo · sin obstrucciones',r:'v',eq:'GoPro 1 · Cam 4'},
+        {id:'m6',l:'Verificar encuadre cam 5 — GoPro 2 (sobre la batería)',s:'Ángulo fijo · sin obstrucciones',r:'v',eq:'GoPro 2 · Cam 5'},
+      ]},
+      {id:'p4',title:'Novastar VX6s — LED wall',items:[
+        {id:'n1',l:'Verificar que VX6s detecta el LED wall sin errores',s:'',r:'v',eq:'Novastar VX6s'},
+        {id:'n2',l:'Confirmar resolución de salida coincide con ProPresenter',s:'Sin corte de bordes ni overscan',r:'v',eq:'Novastar VX6s'},
+        {id:'n3',l:'Verificar imagen en LED wall — color, nitidez y alineación',s:'Sin franjas · sin píxeles muertos · sin distorsión',r:'v',eq:'Novastar VX6s'},
+      ]},
+    ]},
+    { id:'rb_pre_propre', icon:'🖥', label:'ProPresenter 7', color:'green', phases:[
+      {id:'p5',title:'Contenido del servicio',items:[
+        {id:'o1',l:'Abrir playlist del servicio',s:'Orden: alabanza → anuncios → sermón → altar → cierre',r:'p',eq:'ProPresenter 7'},
+        {id:'o2',l:'Verificar letras de canciones completas y correctas',s:'Revisar con el setlist del líder de alabanza',r:'p',eq:'ProPresenter 7'},
+        {id:'o3',l:'Verificar versículos y textos del sermón',s:'Confirmar con el pastor',r:'p',eq:'ProPresenter 7'},
+        {id:'o4',l:'Verificar Stage Display en confidence monitor',s:'Letra siguiente y reloj visibles',r:'p',eq:'Confidence Monitor'},
+        {id:'o5',l:'Verificar señal en las 4 TVs de respaldo',s:'Overflow · Infantes · Lateral · Bienvenida',r:'v',eq:'TVs respaldo'},
+        {id:'o6',l:'Activar loop de slides de pre-servicio',s:'Corriendo al llegar la congregación',r:'p',eq:'ProPresenter 7'},
+      ]},
+    ]},
+    { id:'rb_pre_luces', icon:'💡', label:'Luces & Humo', color:'warn', phases:[
+      {id:'p6',title:'Lightkey',items:[
+        {id:'q1',l:'Activar escena de pre-servicio',s:'Ambiente suave mientras llega la congregación',r:'l',eq:'Lightkey'},
+        {id:'q2',l:'Verificar que luces no generan reflejo en cámaras',s:'Reposicionar si hay flare visible en monitor',r:'l',eq:'Lightkey'},
+        {id:'q3',l:'Confirmar escenas: alabanza, predicación, altar',s:'Repaso rápido de cada escena',r:'l',eq:'Lightkey'},
+        {id:'q4',l:'Verificar máquina de humo lista para el servicio',s:'Precalentada y con fluido suficiente',r:'l',eq:'Máquina de humo'},
+      ]},
+    ]},
+    { id:'rb_pre_stream', icon:'📡', label:'Restream', color:'blue', phases:[
+      {id:'p7',title:'Pre-streaming',items:[
+        {id:'r1',l:'Verificar que Restream está en línea y configurado',s:'Confirmar conexión a YouTube y Facebook desde el dashboard',r:'v',eq:'Restream'},
+        {id:'r2',l:'Configurar título del stream en Restream',s:'Nombre del sermón + fecha + pastor',r:'v',eq:'Restream'},
+        {id:'r3',l:'Confirmar que el stream arrancará con el timer de ProPresenter',s:'No iniciar manualmente — el timer lo activa automáticamente',r:'v',eq:'Restream'},
+      ]},
+    ]},
+    { id:'rb_pre_lider', icon:'📋', label:'Coordinación — Líder', color:'danger', phases:[
+      {id:'p8',title:'Final antes del servicio',items:[
+        {id:'s1',l:'Reunión de 5 min con todo el equipo técnico',s:'Confirmar orden del servicio y señales de comunicación',r:'d',eq:''},
+        {id:'s2',l:'Confirmar setlist final con líder de alabanza',s:'Actualizar ProPresenter si hay cambios',r:'d',eq:''},
+        {id:'s3',l:'Confirmar tema y textos con el pastor',s:'Ajustar slides si es necesario',r:'d',eq:''},
+      ]},
+    ]},
+  ],
+  t3: [
+    { id:'rb_inicio', icon:'▶', label:'Inicio del servicio', color:'green', phases:[
+      {id:'sv1',title:'Al comenzar',items:[
+        {id:'t1',l:'Verificar timer de cuenta regresiva activo en ProPresenter',s:'Domingo: stream arranca automático a las 11:00 AM · Miércoles: 7:10 PM',r:'p',eq:'ProPresenter 7'},
+        {id:'t2',l:'Confirmar que el stream arrancó en YouTube y Facebook',s:'Verificar en Restream dashboard que ambas plataformas están activas',r:'v',eq:'Restream'},
+        {id:'t3',l:'Activar escena de alabanza en Lightkey',s:'Domingo: luces de casa se apagan automáticamente a las 11:04 AM · Miércoles: manual',r:'l',eq:'Lightkey'},
+        {id:'t4',l:'ProPresenter: diapositiva de bienvenida',s:'Luego letras en cue del líder de alabanza',r:'p',eq:'ProPresenter 7'},
+        {id:'t5',l:'ATEM: plano general — cam 1 (URSA)',s:'Cortar a cam 2, cam 4 o cam 5 según el movimiento',r:'v',eq:'ATEM'},
+        {id:'t6',l:'Sonido: confirmar niveles de apertura estables',s:'Vocalistas, instrumentos e in-ears balanceados',r:'s',eq:'X32'},
+      ]},
+    ]},
+    { id:'rb_alabanza', icon:'🎵', label:'Bloque de alabanza', color:'green', phases:[
+      {id:'sv2',title:'Durante la alabanza',items:[
+        {id:'u1',l:'ProPresenter: avanzar letras en tiempo real',s:'Seguir al líder — nunca adelantarse',r:'p',eq:'ProPresenter 7'},
+        {id:'u2',l:'Sonido: ajustar mezcla según dinámica de cada canción',s:'',r:'s',eq:'X32'},
+        {id:'u3',l:'Video: variar planos — no más de 15 seg en el mismo corte',s:'Intercalar cam 1 · cam 2 · cam 4 (frontal) · cam 5 (batería)',r:'v',eq:'ATEM'},
+        {id:'u4',l:'Luces: cambiar escenas según energía de cada canción',s:'Lentas = cálido suave / rápidas = más dinámico',r:'l',eq:'Lightkey'},
+        {id:'u5',l:'Monitorear stream cada 5 min',s:'Verificar en Restream dashboard — YouTube y Facebook activos',r:'v',eq:'Restream'},
+      ]},
+    ]},
+    { id:'rb_anuncios', icon:'📢', label:'Anuncios / transiciones', color:'blue', phases:[
+      {id:'sv3',title:'Anuncios',items:[
+        {id:'v1',l:'ProPresenter: slides de anuncios en cue',s:'',r:'p',eq:'ProPresenter 7'},
+        {id:'v2',l:'Luces: escena neutra para anuncios',s:'Iluminación pareja, no dramática',r:'l',eq:'Lightkey'},
+        {id:'v3',l:'Video: plano más abierto — presentador bien encuadrado',s:'',r:'v',eq:'ATEM'},
+        {id:'v4',l:'Sonido: subir mic presentador — bajar música de fondo',s:'Sin feedback con el cambio',r:'s',eq:'X32'},
+        {id:'v5',l:'Cuando entra el pastor — verificar que su mic está activo y con volumen',s:'Confirmar nivel en X32 antes de que hable',r:'s',eq:'Shure mic 4'},
+      ]},
+    ]},
+    { id:'rb_predica', icon:'📖', label:'Predicación / sermón', color:'blue', phases:[
+      {id:'sv4',title:'Durante el sermón',items:[
+        {id:'w1',l:'ProPresenter: versículos en cue del pastor',s:'Atento — no adelantarse ni rezagarse',r:'p',eq:'ProPresenter 7'},
+        {id:'w2',l:'Luces: escena de predicación — enfoque en el pastor',s:'',r:'l',eq:'Lightkey'},
+        {id:'w3',l:'Sonido: mic del pastor en primer plano, instrumentos al mínimo',s:'',r:'s',eq:'X32'},
+        {id:'w4',l:'Video: close-up del pastor — cam 4 o cam 5 como complementario',s:'',r:'v',eq:'ATEM'},
+        {id:'w5',l:'Monitorear audio del stream — nivel ideal -12 a -6 dBFS',s:'',r:'v',eq:'Restream'},
+      ]},
+    ]},
+    { id:'rb_altar', icon:'🙏', label:'Altar / momento especial', color:'warn', phases:[
+      {id:'sv5',title:'Altar',items:[
+        {id:'x1',l:'Luces: escena de altar — cálido, tenue',s:'Atmósfera de reverencia e intimidad',r:'l',eq:'Lightkey'},
+        {id:'x2',l:'Sonido: música suave — solo mic del pastor activo',s:'',r:'s',eq:'X32'},
+        {id:'x3',l:'ProPresenter: slide de altar o pantalla en negro',s:'Según decisión del pastor en el momento',r:'p',eq:'ProPresenter 7'},
+        {id:'x4',l:'Video: planos contemplativos — sin cortes bruscos',s:'',r:'v',eq:'ATEM'},
+      ]},
+    ]},
+  ],
+  t4: [
+    { id:'rb_cierre', icon:'📡', label:'Cierre del stream', color:'blue', phases:[
+      {id:'cl1',title:'Cerrar transmisión',items:[
+        {id:'y1',l:'ProPresenter: slide de cierre con info de la iglesia',s:'Redes sociales, horarios, dirección',r:'p',eq:'ProPresenter 7'},
+        {id:'y2',l:'1–2 min de cierre antes de detener stream',s:'No cortar abruptamente',r:'v',eq:'Restream'},
+        {id:'y3',l:'Detener stream desde Restream',s:'Confirmar "finalizado" en YouTube y Facebook',r:'v',eq:'Restream'},
+        {id:'y4',l:'Descargar archivos de cam 4 y cam 5 si se necesitan',s:'Para Reels, Shorts o contenido de redes',r:'v',eq:'GoPros'},
+      ]},
+    ]},
+    { id:'rb_apagado', icon:'🔌', label:'Apagado — orden estricto', color:'warn', phases:[
+      {id:'cl2',title:'Apagar en orden',items:[
+        {id:'z1',l:'Bajar todos los faders del X32 a cero',s:'Antes de tocar cualquier equipo',r:'s',eq:'X32'},
+        {id:'z2',l:'Apagar amp / PA — switch separado — PRIMERO',s:'Siempre el primero al apagar — protege las bocinas',r:'s',eq:'Amp / PA'},
+        {id:'z3',l:'Apagar rack de power del rack de sonido',s:'Un solo switch apaga Shure PSM y los 4 receptores',r:'s',eq:'Rack de power'},
+        {id:'z4',l:'Apagar consola X32 — ÚLTIMA',s:'La mixer siempre va de última al apagar · Guardar escena si hay ajustes',r:'s',eq:'X32'},
+        {id:'z5',l:'Apagar cam 4 (GoPro 1) y cam 5 (GoPro 2)',s:'Conectar a carga si batería quedó baja',r:'v',eq:'GoPros'},
+        {id:'z6',l:'Apagar cam 1 y cam 2 (URSA Broadcast G2)',s:'Poner tapas de lente',r:'v',eq:'URSA G2'},
+        {id:'z7',l:'Cerrar ProPresenter 7',s:'Guardar proyecto si hay cambios pendientes',r:'p',eq:'ProPresenter 7'},
+        {id:'z8',l:'Apagar confidence monitor',s:'',r:'p',eq:'Confidence Monitor'},
+        {id:'z9',l:'Apagar TVs de respaldo (ir físicamente)',s:'Bienvenida · Lateral · Infantes · Overflow',r:'v',eq:'TVs respaldo'},
+        {id:'z10',l:'Apagar switches L.D. Screen en la pared',s:'',r:'v',eq:'LED principal'},
+        {id:'z11',l:'Apagar Mac de ProPresenter',s:'',r:'p',eq:'Mac ProPresenter'},
+        {id:'z12',l:'Apagar PC del ATEM Software Control',s:'',r:'v',eq:'PC ATEM'},
+        {id:'z13',l:'Apagar switch principal del rack de video',s:'Apaga todo: ATEM · Novastar VX6s · D-Link',r:'v',eq:'Rack de video'},
+        {id:'z14',l:'Apagar máquina de humo — dejar enfriar antes de guardar',s:'',r:'l',eq:'Máquina de humo'},
+        {id:'z15',l:'Apagar Lightkey → cerrar app → apagar dimmer rack',s:'En ese orden exacto',r:'l',eq:'Lightkey'},
+      ]},
+    ]},
+    { id:'rb_post', icon:'📝', label:'Post-producción', color:'danger', phases:[
+      {id:'cl3',title:'Seguimiento',items:[
+        {id:'aa1',l:'Registrar incidencias técnicas del servicio',s:'Fallas, ajustes, cambios de último minuto',r:'d',eq:''},
+        {id:'aa2',l:'Comunicar ajustes al equipo para el próximo servicio',s:'WhatsApp o reunión breve post-servicio',r:'d',eq:''},
+        {id:'aa3',l:'Subir video del sermón a YouTube (versión completa)',s:'SEO: título, descripción NTV, hashtags ICSE · Descargar desde Restream si aplica',r:'d',eq:'YouTube'},
+        {id:'aa4',l:'Extraer clip para Shorts / Reels si hay frase destacada',s:'DaVinci Resolve o CapCut — TikTok, IG, FB',r:'d',eq:''},
+      ]},
+    ]},
+  ],
 };
 
 // State
-let userName = '', userRole = '', userIcon = '';
-let checkedData = {};
-let selectedRole = null;
+let userName='', userRole='', userIcon='', selRoleData=null;
+let checkedData={};
 
-// Firebase refs
-const checklistRef = ref(db, 'checklist');
-const usersRef = ref(db, 'users');
+const checklistRef = ref(db,'checklist');
+const usersRef = ref(db,'users');
+
+// Flatten all items
+function allItems(){
+  let a=[];
+  Object.values(RUBROS).forEach(rubros=>rubros.forEach(rb=>rb.phases.forEach(ph=>ph.items.forEach(it=>a.push(it)))));
+  return a;
+}
+function allItemsInRubro(rb){ let a=[]; rb.phases.forEach(ph=>ph.items.forEach(it=>a.push(it))); return a; }
 
 // LOGIN
-window.selectRole = function(role, icon) {
-  selectedRole = {role, icon};
-  document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+window.selectRole = (role,icon,el) => {
+  selRoleData={role,icon};
+  document.querySelectorAll('.role-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
   checkLogin();
 };
-
-window.checkLogin = function() {
-  const name = document.getElementById('nameInput').value.trim();
-  const btn = document.getElementById('loginBtn');
-  btn.classList.toggle('ready', name.length > 0 && selectedRole);
+window.checkLogin = () => {
+  const n=document.getElementById('nameInput').value.trim();
+  document.getElementById('loginBtn').classList.toggle('ready', n.length>0 && selRoleData);
 };
-
-window.doLogin = function() {
-  const name = document.getElementById('nameInput').value.trim();
-  if (!name || !selectedRole) return;
-  userName = name;
-  userRole = selectedRole.role;
-  userIcon = selectedRole.icon;
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('mainApp').style.display = 'block';
-  document.getElementById('userLabel').textContent = `${userIcon} ${userName} — ${userRole}`;
-
-  // Register user online
-  const userRef = ref(db, `users/${userName}`);
-  set(userRef, { name: userName, role: userRole, icon: userIcon, online: true, ts: Date.now() });
-
-  // Remove on disconnect handled by listening
+window.doLogin = () => {
+  const n=document.getElementById('nameInput').value.trim();
+  if(!n||!selRoleData) return;
+  userName=n; userRole=selRoleData.role; userIcon=selRoleData.icon;
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('mainApp').classList.add('on');
+  document.getElementById('userLabel').textContent=`${userIcon} ${userName} — ${userRole}`;
+  set(ref(db,`users/${userName}`),{name:userName,role:userRole,icon:userIcon,ts:Date.now()});
   startApp();
 };
-
-window.logout = function() {
-  if (!confirm('¿Salir del checklist?')) return;
-  const userRef = ref(db, `users/${userName}`);
-  remove(userRef);
+window.logout = () => {
+  if(!confirm('¿Salir del checklist?')) return;
+  remove(ref(db,`users/${userName}`));
   location.reload();
 };
 
-function startApp() {
+function startApp(){
   buildPanes();
-
-  // Listen to checklist changes in real time
-  onValue(checklistRef, (snapshot) => {
-    checkedData = snapshot.val() || {};
-    refreshUI();
-  });
-
-  // Listen to online users
-  onValue(usersRef, (snapshot) => {
-    const users = snapshot.val() || {};
-    renderOnlineUsers(users);
-  });
+  onValue(checklistRef,snap=>{ checkedData=snap.val()||{}; refreshUI(); });
+  onValue(usersRef,snap=>{ renderOnline(snap.val()||{}); });
 }
 
-function renderOnlineUsers(users) {
-  const bar = document.getElementById('onlineBar');
-  const list = Object.values(users);
-  if (list.length === 0) { bar.innerHTML = ''; return; }
-  bar.innerHTML = list.map(u =>
-    `<div class="online-pill"><span class="online-dot"></span>${u.icon} ${u.name}</div>`
-  ).join('');
+function renderOnline(users){
+  const bar=document.getElementById('onlineBar');
+  const list=Object.values(users);
+  bar.innerHTML=list.length===0?'':list.map(u=>`<div class="online-pill"><span class="odot"></span>${u.icon} ${u.name}</div>`).join('');
 }
 
-// TOGGLE
-window.toggle = function(id) {
-  const itemRef = ref(db, `checklist/${id}`);
-  if (checkedData[id]) {
-    remove(itemRef);
-  } else {
-    set(itemRef, { by: userName, role: userRole, icon: userIcon, ts: Date.now() });
-  }
+window.toggle = id => {
+  const r=ref(db,`checklist/${id}`);
+  if(checkedData[id]) remove(r);
+  else set(r,{by:userName,role:userRole,icon:userIcon,ts:Date.now()});
 };
 
-function refreshUI() {
-  const all = allItems();
-  const done = all.filter(i => checkedData[i.id]).length;
-  document.getElementById('st').textContent = all.length;
-  document.getElementById('sd').textContent = done;
-  document.getElementById('sr').textContent = all.length - done;
-  const pct = Math.round(done / all.length * 100);
-  document.getElementById('sp').textContent = pct + '%';
-  document.getElementById('pbar').style.width = pct + '%';
+function refreshUI(){
+  const all=allItems(), done=all.filter(i=>checkedData[i.id]).length;
+  const pct=all.length?Math.round(done/all.length*100):0;
+  document.getElementById('gpLabel').textContent=`${done} de ${all.length} completados`;
+  document.getElementById('gpPct').textContent=pct+'%';
+  document.getElementById('gpFill').style.width=pct+'%';
 
-  all.forEach(it => {
-    const el = document.getElementById('i-' + it.id);
-    if (!el) return;
-    const data = checkedData[it.id];
-    el.classList.toggle('ck', !!data);
-    const who = el.querySelector('.who-checked');
-    if (who) who.textContent = data ? `✓ ${data.icon} ${data.by}` : '';
+  // Update items
+  all.forEach(it=>{
+    const el=document.getElementById('i-'+it.id);
+    if(!el) return;
+    const data=checkedData[it.id];
+    el.classList.toggle('ck',!!data);
+    const wt=el.querySelector('.who-tag');
+    if(wt) wt.textContent=data?`${data.icon} ${data.by}`:'';
   });
 
-  // Update phase progress
-  Object.values(PHASES).forEach(phases => phases.forEach(ph => {
-    const done = ph.items.filter(i => checkedData[i.id]).length;
-    const el = document.getElementById('pp-' + ph.id);
-    if (el) el.textContent = done + '/' + ph.items.length;
+  // Update rubro progress bars
+  Object.values(RUBROS).forEach(rubros=>rubros.forEach(rb=>{
+    const items=allItemsInRubro(rb);
+    const d=items.filter(i=>checkedData[i.id]).length;
+    const pct=items.length?Math.round(d/items.length*100):0;
+    const fill=document.getElementById('rf-'+rb.id);
+    const cnt=document.getElementById('rc-'+rb.id);
+    if(fill) fill.style.width=pct+'%';
+    if(cnt) cnt.textContent=`${d}/${items.length}`;
   }));
 }
 
-function allItems() {
-  let a = [];
-  Object.values(PHASES).forEach(ps => ps.forEach(ph => ph.items.forEach(it => a.push(it))));
-  return a;
-}
-
-window.togglePhase = function(id) {
-  const ph = document.getElementById('ph-' + id);
-  if (ph) ph.classList.toggle('open');
+window.toggleRubro = id => {
+  const el=document.getElementById('rb-'+id);
+  if(el) el.classList.toggle('open');
 };
 
-window.setTab = function(t, btn) {
-  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+window.setTab = (t,btn) => {
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
   document.getElementById(t).classList.add('on');
-  if (btn) btn.classList.add('on');
+  if(btn) btn.classList.add('on');
 };
 
-window.setSvc = function(s, btn) {
-  document.querySelectorAll('.svc-btn').forEach(b => b.classList.remove('on'));
-  if (btn) btn.classList.add('on');
-  const n = document.getElementById('svc-note');
-  if (n) n.style.display = (s === 'm') ? 'block' : 'none';
+window.setSvc = (s,btn) => {
+  document.querySelectorAll('.svc-btn').forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  const n=document.getElementById('svc-note');
+  if(n) n.style.display=(s==='m')?'block':'none';
 };
 
-window.confirmReset = function() {
-  if (!confirm('¿Reiniciar TODO el checklist para todos?\nEsto afecta a todo el equipo.')) return;
-  set(checklistRef, null);
-  showToast('Checklist reiniciado para todos');
+window.confirmReset = () => {
+  if(!confirm('¿Reiniciar TODO el checklist para todos?\nEsto afecta a todo el equipo.')) return;
+  set(checklistRef,null);
+  showToast('Checklist reiniciado para todos ✓','ok');
 };
 
 let toastTimer;
-window.showToast = function(msg, type='') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (type ? ' ' + type : '');
+window.showToast = (msg,type='') => {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='toast show'+(type?' '+type:'');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
 };
 
-function buildPanes() {
-  const banners = {
-    t1: `<div class="bn info"><b>Orden de encendido:</b> 1. Mac ProPresenter → 2. Confidence monitor → 3. LED principal → 4. Rack de video → 5. Mac Lightkey + luces → 6. PC ATEM Software → 7. Abrir ProPresenter → 8. TVs de respaldo → 9. X32 + Rack de power + Amp/PA → 10. Cámaras → 11. Streaming (Restream)</div>`,
-    t2: `<div class="bn warn" id="svc-note" style="display:none"><b>Miércoles:</b> Formato más reducido. Ajusta según el programa del día.</div>`,
-    t4: `<div class="bn danger"><b>Orden de apagado:</b> Faders X32 → Amp/PA (PRIMERO) → Rack de power → X32 (ÚLTIMA) → GoPros → URSA → Cerrar ProPresenter → Confidence monitor → TVs → LED screens → Mac → PC ATEM → Rack de video → Humo → Lightkey</div>`,
-  };
+const BANNERS={
+  t1:`<div class="bn info"><b>Orden:</b> Mac ProPresenter → Confidence monitor → LED → Rack de video → Lightkey → PC ATEM → Abrir ProPresenter → TVs respaldo → X32 + Rack + Amp → Cámaras → Restream</div>`,
+  t2:`<div class="bn warn" id="svc-note" style="display:none"><b>Miércoles:</b> Formato más reducido. Ajusta según el programa.</div>`,
+  t4:`<div class="bn danger"><b>Apagado:</b> Faders X32 → Amp/PA (PRIMERO) → Rack de power → X32 (ÚLTIMA) → GoPros → URSA → ProPresenter → Confidence → TVs → LED → Mac → PC ATEM → Rack video → Humo → Lightkey</div>`,
+};
 
-  Object.entries(PHASES).forEach(([tid, phases]) => {
-    const pane = document.getElementById(tid);
-    let html = banners[tid] || '';
-    phases.forEach(ph => {
-      const done = ph.items.filter(i => checkedData[i.id]).length;
-      const bc = ph.bc || 'green';
-      const st = ph.step ? `<span class="ph-step">P${ph.step}</span>` : '';
-      html += `<div class="phase" id="ph-${ph.id}">
-        <div class="ph-head" onclick="togglePhase('${ph.id}')">
-          ${st}
-          <span class="ph-title">${ph.title}</span>
-          <span class="badge ${bc}">${ph.badge}</span>
-          <span class="ph-prog" id="pp-${ph.id}">${done}/${ph.items.length}</span>
-          <span class="ph-arrow">▾</span>
-        </div>
-        <div class="ph-body">`;
-      ph.items.forEach(it => {
-        const data = checkedData[it.id];
-        const ck = data ? 'ck' : '';
-        const eq = it.eq ? `<span class="etag">${it.eq}</span>` : '';
-        const whoText = data ? `${data.icon} ${data.by}` : '';
-        html += `<div class="item ${ck}" id="i-${it.id}" onclick="toggle('${it.id}')">
-          <div class="checkbox"><span class="checkmark">✓</span></div>
-          <div class="itext">
-            <div class="ilabel">${it.l}</div>
-            ${it.s ? `<div class="isub">${it.s}</div>` : ''}
-            <div class="itags">
-              <span class="rtag ${RT[it.r]}">${RL[it.r]}</span>
-              ${eq}
+function buildPanes(){
+  Object.entries(RUBROS).forEach(([tid,rubros])=>{
+    const pane=document.getElementById(tid);
+    let html=BANNERS[tid]||'';
+    rubros.forEach(rb=>{
+      const items=allItemsInRubro(rb);
+      const d=items.filter(i=>checkedData[i.id]).length;
+      const pct=items.length?Math.round(d/items.length*100):0;
+      html+=`<div class="rubro-btn" id="rb-${rb.id}">
+        <div class="rubro-head" onclick="toggleRubro('${rb.id}')">
+          <div class="rubro-icon ${rb.color}">${rb.icon}</div>
+          <div class="rubro-info">
+            <div class="rubro-top">
+              <span class="rubro-name">${rb.label}</span>
+              <span class="rubro-count" id="rc-${rb.id}">${d}/${items.length}</span>
             </div>
-            <div class="who-checked">${whoText}</div>
+            <div class="rubro-track">
+              <div class="rubro-fill ${rb.color}" id="rf-${rb.id}" style="width:${pct}%"></div>
+            </div>
           </div>
-        </div>`;
+          <span class="rubro-arrow">▾</span>
+        </div>
+        <div class="rubro-body">`;
+
+      rb.phases.forEach(ph=>{
+        const stepTag=ph.step?`<span class="ph-step-tag">Paso ${ph.step}</span>`:'';
+        html+=`<div class="phase-group">
+          <div class="ph-label">${stepTag}${ph.title}</div>`;
+        ph.items.forEach(it=>{
+          const data=checkedData[it.id];
+          const ck=data?'ck':'';
+          const eq=it.eq?`<span class="etag">${it.eq}</span>`:'';
+          const whoText=data?`${data.icon} ${data.by}`:'';
+          html+=`<div class="item ${ck}" id="i-${it.id}" onclick="toggle('${it.id}')">
+            <div class="checkbox"><span class="checkmark">✓</span></div>
+            <div class="itext">
+              <div class="ilabel">${it.l}</div>
+              ${it.s?`<div class="isub">${it.s}</div>`:''}
+              <div class="itags"><span class="rtag ${RT[it.r]}">${RL[it.r]}</span>${eq}</div>
+              <div class="who-tag">${whoText}</div>
+            </div>
+          </div>`;
+        });
+        html+=`</div>`;
       });
-      html += `</div></div>`;
+      html+=`</div></div>`;
     });
-    pane.innerHTML = html;
+    pane.innerHTML=html;
   });
 }
 </script>
